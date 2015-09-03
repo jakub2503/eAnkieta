@@ -39,9 +39,12 @@ SimpleNavigation::Configuration.run do |navigation|
 
   # Define the primary navigation
   navigation.items do |primary|
-	primary.item :subject, 'Przedmioty'
-	primary.item :survey, 'Ankiety'
-	primary.item :statistics, 'Statystyki'  
+	primary.dom_id= 'navigation_bar'
+	primary.item :navigation_title, 'System Ankietowania Zajęć'
+	primary.item :navigation_subject, 'Przedmioty'
+	primary.item :navigation_survey, 'Ankiety'
+	primary.item :navigation_statistics, 'Statystyki', root_path 
+	primary.item :navigation_help, 'Pomoc' 
   end
 end
     # Add an item to the primary navigation. The following params apply:
