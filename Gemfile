@@ -47,3 +47,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Use simple-navigation for navigation bar
 gem "simple-navigation"
+#CoffeeScript because of errors
+gem 'coffee-script-source', '1.8.0'

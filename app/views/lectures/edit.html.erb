@@ -1,0 +1,23 @@
+<h1>Edycja przedmiotu</h1>
+<%= form_for :lecture, url: lecture_path(@lecture), method: :patch do |f| %>
+
+<p>
+	<%= f.label :"Nazwa przedmiotu" %><br>
+	<%= f.text_field :name %>
+<p>
+
+<p>
+	<%= f.label :"Rok" %><br>
+	<%= f.number_field :year, min:2015, value:2015 %>
+</p>
+
+<p>
+	<%= f.label:"Semestr" %><br>
+	<%= f.select :semester, [['Zimowy','Z'],['Letni','L']] %>
+</p>
+
+<p>
+	<%= f.submit :"Zapisz zmiany"%><br>
+</p>
+ 
+<% end %>

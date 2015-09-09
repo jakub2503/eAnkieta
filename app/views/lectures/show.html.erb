@@ -1,0 +1,19 @@
+ <%= link_to 'Powrot do listy przedmiotow', controller: 'lectures' %><br>
+ <%= link_to 'Dodaj nowy przedmiot', new_lectures_path %><br>
+
+<p>
+  <strong>Nazwa:</strong>
+  <%= @lecture.name %>
+</p>
+ 
+<p>
+  <strong>Rok:</strong>
+  <%= @lecture.year %>
+</p>
+
+<p>
+  <strong>Semestr:</strong>
+  <%= @lecture.semester %>
+</p>
+
+<%= link_to 'Edytuj', edit_lecture_path(@lecture) %>

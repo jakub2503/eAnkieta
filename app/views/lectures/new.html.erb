@@ -1,0 +1,24 @@
+<h1>Tworzenie nowego przedmiotu</h1>
+
+
+<%= link_to 'Lista przedmiotow', controller: 'lectures' %><br>
+<%= form_for :lecture, url: lectures_path do |f| %>
+<p>
+	<%= f.label :"Nazwa przedmiotu" %><br>
+	<%= f.text_field :name %>
+<p>
+
+<p>
+	<%= f.label :"Rok" %><br>
+	<%= f.number_field :year, min:2015, value:2015 %>
+</p>
+
+<p>
+	<%= f.label:"Semestr" %><br>
+	<%= f.select :semester, [['Zimowy','Z'],['Letni','L']] %>
+</p>
+
+<p>
+	<%= f.submit :"Dodaj przedmiot"%><br>
+</p>
+<% end %>

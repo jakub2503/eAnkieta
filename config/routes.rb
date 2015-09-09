@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
-  resources :surveys
-  #get 'welcome/index'
+  # get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'welcome#index'
+  get '/lectures', to:'lectures#index', as:'all_lectures'
+  patch '/lectures/:id', to:'lectures#update'
+  put '/lectures/:id', to:'lectures#update'
+  delete '/lectures/:id', to:'lectures#destroy', as:'delete_lecture'
+  resource :lectures
+  get '/lectures/:id', to:'lectures#show', as:'lecture'
+  get '/lectures/edit/:id', to:'lectures#edit', as:'edit_lecture'
+  
+
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

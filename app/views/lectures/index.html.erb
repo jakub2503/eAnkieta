@@ -1,0 +1,23 @@
+<h1>Lista przedmiotow</h1>
+ <%= link_to 'Dodaj nowy przedmiot', new_lectures_path %><br>
+ 
+<table>
+  <tr>
+    <th>Nazwa</th>
+    <th>Rok</th>
+	<th>Semestr</th>
+  </tr>
+ 
+  <% @all_lectures.each do |lecture| %>
+    <tr>
+      <td><%= lecture.name %></td>
+      <td><%= lecture.year %></td>
+	  <td><%= lecture.semester %></td>
+	  <td><%= link_to 'Pokaz', lecture_path(lecture) %></td>
+	  <td><%= link_to 'Edytuj', edit_lecture_path(lecture) %></td>
+	  <td><%= link_to 'Usun', delete_lecture_path(lecture),
+              method: :delete,
+              data: { confirm: 'Czy na pewno chcesz usunac ten przedmiot?' } %></td>
+    </tr>
+  <% end %>
+</table>
