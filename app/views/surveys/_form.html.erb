@@ -1,0 +1,57 @@
+<%= form_for(@survey) do |f| %>
+  <% if @survey.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
+
+      <ul>
+      <% @survey.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :token %><br>
+    <%= f.text_field :token, "size" => 4 %>
+  </div>
+  
+  <div class="field">
+	<%= f.label :data_zajęć %><br>
+    <%= f.date_select :start_date %><br>
+    <%= f.time_select :start_date, :ignore_date => true %>
+  </div>
+  
+  <div class="field">
+	<%= f.label :HIDDEN_end_date %><br>
+    <%= f.date_select :end_date %><br>
+    <%= f.time_select :end_date, :ignore_date => true %>
+  </div>
+  
+  
+  <div class="field">
+  <%= f.label :godzina_zajęć %><br>
+    <%= f.time_select :start_time %>
+  </div>
+  
+  <div class="field">
+  <%= f.label :liczba_ankiet %><br>
+    <%= f.text_field :number_of_surveys, "size" => 1 %>
+  </div>
+  
+  <div class="field">
+  <%= f.radio_button :interval, '1', :checked => true %>
+  <%= f.label :interval, '1 tydzień', :value => '1' %>
+	<%= f.radio_button :interval, '2' %>
+	<%= f.label :interval, '2 tygodnie', :value => '2' %>
+  <%= f.radio_button :interval, '3' %>
+	<%= f.label :interval, '3 tygodnie', :value => '3' %>
+  </div>
+  
+  
+  
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

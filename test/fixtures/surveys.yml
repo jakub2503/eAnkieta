@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  token: MyText
+  start_date: 2015-09-03 16:37:11
+  end_date: 2015-09-03 16:37:11
+
+two:
+  token: MyText
+  start_date: 2015-09-03 16:37:11
+  end_date: 2015-09-03 16:37:11
