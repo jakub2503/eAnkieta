@@ -41,14 +41,12 @@ class SurveysController < ApplicationController
       if @survey.save
         a=a+1
         @token.destroy
-      else
-
       end
+
     end
 
-    
     respond_to do |format|
-      if a=num_sur
+      if a==num_sur and a!=0
         format.html { redirect_to surveys_url, notice: 'Poprawnie utworzono ankiety.' }
       else
         format.html { render :new }
@@ -89,6 +87,6 @@ class SurveysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_params
-      params.require(:survey).permit(:token, :start_date, :end_date, :interval, :start_time, :number_of_surveys)
+      params.require(:survey).permit(:start_date, :end_date, :interval, :start_time, :number_of_surveys)
     end
 end
