@@ -6,6 +6,7 @@ class ScoresController < ApplicationController
   def index
     @scores = Score.all
 	@surveys = Survey.all
+	render :layout => false
   end
   
 
@@ -17,12 +18,16 @@ class ScoresController < ApplicationController
 
     # POST /scores/new
   def new_post
+	
 	if  Survey.exists?(token: params[:survey][:token]) == true
+		
 		params[:temp_s] = Survey.find_by "token = '"+params[:survey][:token]+"'"
 		@temp = params[:temp_s][:id]
 		@score = Score.new
+		render :layout => false
 	else
-		redirect_to scores_path, notice: 'Score was successfully created.'
+		
+		redirect_to scores_path(:me => 'Nie znaleziono ankiety!')
 	end
   end
 
@@ -32,10 +37,10 @@ class ScoresController < ApplicationController
   # POST /scores.json
   def create
     @score = Score.new(score_params)
-
     respond_to do |format|
       if @score.save
-        format.html { redirect_to scores_path, notice: 'Score was successfully created.' }
+	    
+        format.html { redirect_to scores_path(:ms => 'Dziękujemy za ocenę!') }
         format.json { render :show, status: :created, location: @score }
       else
         format.html { render :new }

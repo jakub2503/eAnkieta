@@ -1,7 +1,5 @@
-// Place all the styles related to the scores controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-form
+.score {
+form 
 {
   width: 100%;
   }
@@ -35,3 +33,5 @@ input[type=text], input[type=url], input[type=email], input[type=password], inpu
  border: 1px solid #bbb;
  -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;
 }
+}
+

@@ -1,4 +1,14 @@
-<p id="notice"><%= notice %></p>
+<head>
+  <title>eAnkieta</title>
+  <meta name="viewport" content="width=device-width" />
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "mobile-device.css" %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<div class="score">
+
 
 <center><h1>OCENA</h1></center>
 
@@ -35,3 +45,4 @@
 <% end %>
 <br>
 <%= button_to 'Back', scores_path, :method => :get %>
+</div>

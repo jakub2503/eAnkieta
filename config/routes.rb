@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
  resources :surveys
   post 'scores/new', to:'scores#new_post', as:'new_score_post'
+  get 'scores/new', to:'scores#index', as:'new_score_get'
   resources :scores
 
   #get 'welcome/index'

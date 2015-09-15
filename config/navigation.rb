@@ -44,7 +44,7 @@ SimpleNavigation::Configuration.run do |navigation|
 	primary.item :navigation_subject, 'Przedmioty', lectures_path
 	primary.item :navigation_survey, 'Ankiety', surveys_path
 	primary.item :navigation_statistics, 'Statystyki', root_path
-  primary.item :navigation_scores, 'TEMP - GLOSUJ!', scores_path
+  primary.item :navigation_scores, 'GLOSUJ', scores_path
 	primary.item :navigation_help, 'Pomoc' 
   end
 end
