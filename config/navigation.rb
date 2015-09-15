@@ -41,7 +41,7 @@ SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |primary|
 	primary.dom_id= 'navigation_bar'
 	primary.item :navigation_title, 'System Ankietowania Zajęć'
-	primary.item :navigation_subject, 'Przedmioty'
+	primary.item :navigation_subject, 'Przedmioty', lectures_path
 	primary.item :navigation_survey, 'Ankiety', surveys_path
 	primary.item :navigation_statistics, 'Statystyki', root_path 
 	primary.item :navigation_help, 'Pomoc' 

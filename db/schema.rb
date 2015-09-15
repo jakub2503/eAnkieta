@@ -16,6 +16,15 @@ ActiveRecord::Schema.define(version: 20150909123038) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "lectures", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "year"
+    t.string   "semester"
+    t.integer  "id_user"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "surveys", force: :cascade do |t|
     t.string   "token",      limit: 4, null: false
     t.datetime "start_date",           null: false
