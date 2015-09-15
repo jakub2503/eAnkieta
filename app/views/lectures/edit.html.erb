@@ -1,6 +1,18 @@
 <h1>Edycja przedmiotu</h1>
 <%= form_for :lecture, url: lecture_path(@lecture), method: :patch do |f| %>
 
+<% if @lecture.errors.any? %>
+    <div id="error_explanation">
+      <h2>Wystąpiła następująca liczba błędów: <%=@lecture.errors.count%></h2>
+
+      <ul>
+      <% @lecture.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
+
 <p>
 	<%= f.label :"Nazwa przedmiotu" %><br>
 	<%= f.text_field :name %>
@@ -8,7 +20,7 @@
 
 <p>
 	<%= f.label :"Rok" %><br>
-	<%= f.number_field :year, min:2015, value:2015 %>
+	<%= f.number_field :year, value:Time.now.year %>
 </p>
 
 <p>

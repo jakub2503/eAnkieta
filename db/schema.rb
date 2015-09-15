@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20150909123038) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "scores", force: :cascade do |t|
+    t.integer  "id_survey"
+    t.integer  "general_score"
+    t.integer  "tempo_score"
+    t.integer  "importance_score"
+    t.string   "comment"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
   create_table "surveys", force: :cascade do |t|
     t.string   "token",      limit: 4, null: false
     t.datetime "start_date",           null: false
