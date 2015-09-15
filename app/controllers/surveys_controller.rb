@@ -87,6 +87,6 @@ class SurveysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_params
-      params.require(:survey).permit(:start_date, :end_date, :interval, :start_time, :number_of_surveys)
+      params.require(:survey).permit(:start_date, :end_date, :interval, :start_time, :number_of_surveys, :lecture_id)
     end
 end

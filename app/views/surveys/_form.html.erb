@@ -12,6 +12,11 @@
   <% end %>
   
   <div class="field">
+    <%= f.label :Wykład %><br />
+    <%= f.select :lecture_id, options_for_select(Lecture.all.map{|s|[s.name, s.id]}) %>
+  </div>
+  
+  <div class="field">
 	<%= f.label :data_zajęć %><br>
     <%= f.date_select :start_date %><br>
     <%= f.time_select :start_date, :ignore_date => true %>
