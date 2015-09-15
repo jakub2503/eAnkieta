@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_survey: 1
+  general_score: 1
+  tempo_score: 1
+  importance_score: 1
+  comment: MyString
+
+two:
+  id_survey: 1
+  general_score: 1
+  tempo_score: 1
+  importance_score: 1
+  comment: MyString

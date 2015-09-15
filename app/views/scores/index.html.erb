@@ -1,0 +1,89 @@
+<p id="notice"><%= notice %></p>
+
+
+<%= form_for :survey, :url => new_score_post_path do |f| %>
+
+    <p>
+    <%= f.label :TOKEN %><br>
+    <%= f.text_field :token %>
+  </p>
+  
+  <p>
+    <%= f.submit :"Przejdź do ankiety" %>
+  </p>
+<% end %>
+
+</form>
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th>Id survey</th>
+      <th>General score</th>
+      <th>Tempo score</th>
+      <th>Importance score</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scores.each do |score| %>
+      <tr>
+        <td><%= score.id_survey %></td>
+        <td><%= score.general_score %></td>
+        <td><%= score.tempo_score %></td>
+        <td><%= score.importance_score %></td>
+        <td><%= score.comment %></td>
+        <td><%= button_to 'Destroy', score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id lecture</th>
+      <th>Token</th>
+      <th>Year</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @surveys.each do |survey| %>
+      <tr>
+        <td><%= survey.id_lecture %></td>
+        <td><%= survey.token %></td>
+        <td><%= survey.year %></td>
+        <td><%= survey.start_date %></td>
+        <td><%= survey.end_date %></td>
+        <td><%= link_to 'Show', survey %></td>
+        <td><%= link_to 'Edit', edit_survey_path(survey) %></td>
+        <td><%= link_to 'Destroy', survey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Score', new_score_path %>
+
+<br>
+
+
+
+

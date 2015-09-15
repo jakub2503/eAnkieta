@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  # get 'welcome/index'
+
+ resources :surveys
+  post 'scores/new', to:'scores#new_post', as:'new_score_post'
+  resources :scores
+
+  #get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  
   # You can have the root of your site routed with "root"
   resources :surveys
   
@@ -16,11 +20,11 @@ Rails.application.routes.draw do
   get '/lectures/:id', to:'lectures#show', as:'lecture'
   get '/lectures/edit/:id', to:'lectures#edit', as:'edit_lecture'
   
-
-  root 'welcome#index'
+   root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+  
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

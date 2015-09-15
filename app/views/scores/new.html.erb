@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>New Score</h1>
+
+
+<%= form_for :score, url: scores_path do |f| %>
+
+    <p>
+    <%= f.label :ID_Ankiety %><br>
+    <%= f.text_field :id_survey , :value => @temp %>
+  </p>
+  
+  
+  
+
+  <p>
+    <%= f.label :Ocena_ogólna %><br>
+    <%= f.select :general_score, [['bardzo dobrze', 5], ['dobrze', 4], ['średnio',3], ['słabo', 2], ['bardzo słabo', 1]] %>
+  </p>
+  
+  <p>
+    <%= f.label :Ocena_tempa %><br>
+    <%= f.select :tempo_score, [['bardzo szybko', 5], ['szybko', 4], ['idealnie',3], ['wolno', 2], ['bardzo wolno', 1]] %>
+  </p>
+
+      <p>
+    <%= f.label :Wartość_wiedzy %><br>
+    <%= f.select :importance_score, [['bardzo dobrze', 5], ['dobrze', 4], ['średnio',3], ['słabo', 2], ['bardzo słabo', 1]] %>
+  </p>
+  
+    <p>
+    <%= f.label :Komentarz %><br>
+    <%= f.text_area :comment , :maxlength => 200, :size => "30x6"%>
+  </p>
+  
+
+ 
+  <p>
+    <%= f.submit :Oceń%>
+  </p>
+<% end %>
+
+<%= link_to 'Back', scores_path %>

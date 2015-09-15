@@ -5,7 +5,9 @@
 <table>
   <thead>
     <tr>
+      <th>Id lecture</th>
       <th>Token</th>
+      <th>Year</th>
       <th>Start date</th>
       <th>End date</th>
       <th colspan="3"></th>
@@ -15,7 +17,9 @@
   <tbody>
     <% @surveys.each do |survey| %>
       <tr>
+        <td><%= survey.id_lecture %></td>
         <td><%= survey.token %></td>
+        <td><%= survey.year %></td>
         <td><%= survey.start_date %></td>
         <td><%= survey.end_date %></td>
         <td><%= link_to 'Show', survey %></td>
