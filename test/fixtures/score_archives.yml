@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  general_score: 
+  tempo_score: 
+  importance_score: 9.99
+
+two:
+  general_score: 
+  tempo_score: 
+  importance_score: 9.99

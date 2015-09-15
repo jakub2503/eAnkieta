@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(version: 20150909123038) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "score_archives", force: :cascade do |t|
+    t.integer  "lecture_id"
+    t.decimal  "general_score",    precision: 4, scale: 3
+    t.decimal  "tempo_score",      precision: 4, scale: 3
+    t.decimal  "importance_score"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "score_archives", ["lecture_id"], name: "index_score_archives_on_lecture_id", using: :btree
+
   create_table "scores", force: :cascade do |t|
     t.integer  "id_survey"
     t.integer  "general_score"
@@ -50,5 +61,6 @@ ActiveRecord::Schema.define(version: 20150909123038) do
     t.datetime "updated_at",           null: false
   end
 
+  add_foreign_key "score_archives", "lectures"
   add_foreign_key "surveys", "lectures"
 end

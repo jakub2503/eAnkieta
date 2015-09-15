@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lecture_id: 1
+  name: MyString
+  general_score: 9.99
+  tempo_score: 9.99
+  importance_score: 9.99
+
+two:
+  lecture_id: 1
+  name: MyString
+  general_score: 9.99
+  tempo_score: 9.99
+  importance_score: 9.99

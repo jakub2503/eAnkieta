@@ -38,6 +38,7 @@ class SurveysController < ApplicationController
       @token=Token.order("RANDOM()").first
       @survey.token=@token.token
 
+      # if save is successful - delete token from databse
       if @survey.save
         a=a+1
         @token.destroy
@@ -87,6 +88,6 @@ class SurveysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_params
-      params.require(:survey).permit(:start_date, :end_date, :interval, :start_time, :number_of_surveys, :lecture_id)
+      params.require(:survey).permit(:start_date, :end_date, :interval, :number_of_surveys, :lecture_id)
     end
 end
