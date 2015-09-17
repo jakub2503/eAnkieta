@@ -5,9 +5,9 @@ def up
         SELECT
           lectures.id as lecture_id,
           lectures.name as lecture_name,
-          CAST(  concat(CAST(AVG(scores.general_score) AS text), CAST(AVG(score_archives.general_score) AS text)) AS numeric(4,3)  ) AS general_score,
-          CAST(  concat(CAST(AVG(scores.tempo_score) AS text), CAST(AVG(score_archives.tempo_score) AS text)) AS numeric(4,3)  ) AS tempo_score,
-          CAST(  concat(CAST(AVG(scores.importance_score) AS text), CAST(AVG(score_archives.importance_score) AS text)) AS numeric(4,3)  ) AS importance_score
+          CAST(  concat(CAST('0',AVG(scores.general_score) AS text), CAST(AVG(score_archives.general_score) AS text)) AS numeric(4,3)  ) AS general_score,
+          CAST(  concat(CAST('0',AVG(scores.tempo_score) AS text), CAST(AVG(score_archives.tempo_score) AS text)) AS numeric(4,3)  ) AS tempo_score,
+          CAST(  concat(CAST('0',AVG(scores.importance_score) AS text), CAST(AVG(score_archives.importance_score) AS text)) AS numeric(4,3)  ) AS importance_score
 
         FROM
         
