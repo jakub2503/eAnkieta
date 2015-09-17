@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   resources :surveys
   
+ get '/lectures/surveys/:id', to:'surveys#index_specific', as:'specific_surveys'
+ post '/lectures/surveys/:id', to:'surveys#index_specific_post'
+
   get '/lectures', to:'lectures#index', as:'all_lectures'
   patch '/lectures/:id', to:'lectures#update'
   put '/lectures/:id', to:'lectures#update'

@@ -37,15 +37,24 @@ SimpleNavigation::Configuration.run do |navigation|
   # If this option is set to true, all item names will be considered as safe (passed through html_safe). Defaults to false.
   #navigation.consider_item_names_as_safe = false
 
+  first_lecture = Lecture.first
+
   # Define the primary navigation
   navigation.items do |primary|
-	primary.dom_id= 'navigation_bar'
-	primary.item :navigation_title, 'System Ankietowania Zajęć'
-	primary.item :navigation_subject, 'Przedmioty', lectures_path
-	primary.item :navigation_survey, 'Ankiety', surveys_path
-	primary.item :navigation_statistics, 'Statystyki', root_path
+  primary.dom_id= 'navigation_bar'
+  primary.item :navigation_title, 'System Ankietowania Zajęć'
+  primary.item :navigation_add_lecture, 'Dodaj przedmiot', new_lectures_path
+  primary.item :navigation_manage_lectures, 'Zarządzaj przedmiotami', lectures_path
+  primary.item :navigation_manage_surveys, 'Zarządzaj ankietami', '/lectures/surveys/'<<first_lecture.id.to_s
+  primary.item :navigation_statistics, 'Statystyki', root_path
+  primary.item :navigation_help, 'Pomoc' 
+
+  primary.item :TEMP, '=================='
+  primary.item :navigation_subject, 'Przedmioty', lectures_path
+  primary.item :navigation_survey, 'Ankiety', surveys_path
+  primary.item :navigation_statistics, 'Statystyki', root_path
   primary.item :navigation_scores, 'GLOSUJ', scores_path
-	primary.item :navigation_help, 'Pomoc' 
+  
   end
 end
     # Add an item to the primary navigation. The following params apply:
@@ -65,27 +74,27 @@ end
     #                            when the item should be highlighted, you can set a regexp which is matched
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>.
     #
-	#===============
+  #===============
     # primary.item :key_1, 'name', url, options
 
     # Add an item which has a sub navigation (same params, but with block)
-	#===============
+  #===============
     #  primary.item :key_2, 'name', url, options do |sub_nav|
-	#===============    
-	# Add an item to the sub navigation (same params again)
-	#===============
+  #===============    
+  # Add an item to the sub navigation (same params again)
+  #===============
     #  sub_nav.item :key_2_1, 'name', url, options
     #===============
-	#end
+  #end
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,
     # thus you can use all the methods and vars you have available in the views.
-	#===============
+  #===============
     #primary.item :key_3, 'Admin', url, class: 'special', if: -> { current_user.admin? }
     #primary.item :key_4, 'Account', url, unless: -> { logged_in? }
-	#===============
-	
+  #===============
+  
     # you can also specify html attributes to attach to this particular level
     # works for all levels of the menu
     #primary.dom_attributes = {id: 'menu-id', class: 'menu-class'}

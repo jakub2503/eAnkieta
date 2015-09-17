@@ -2,6 +2,11 @@
 
 <h1>Zarządzanie ankietami</h1>
 
+<%= form_tag do %>
+ <%= select_tag :lecture_id, options_for_select(Lecture.all.map{|s|[s.name, s.id]}, :selected => params[:id], onchange: "$(this).parent('form').submit();" ) %>
+ <%= submit_tag("Go!") %>
+<% end %>
+
 <table>
   <thead>  
     <tr>
