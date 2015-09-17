@@ -20,11 +20,16 @@ class ScoresController < ApplicationController
   def new_post
 	
 	if  Survey.exists?(token: params[:survey][:token]) == true
-		
 		params[:temp_s] = Survey.find_by "token = '"+params[:survey][:token]+"'"
-		@temp = params[:temp_s][:id]
-		@score = Score.new
-		render :layout => false
+		if Time.now >= params[:temp_s][:start_date] and Time.now <= params[:temp_s][:end_date]
+			@survey_id = params[:temp_s][:id]
+			@score = Score.new
+			params[:temp_l]= Lecture.find(params[:temp_s][:lecture_id])
+			@lecture_name = params[:temp_l][:name] + " " + params[:temp_l][:year].to_s
+			render :layout => false
+		else		
+			redirect_to scores_path(:me => 'Nie znaleziono ankiety!')
+		end
 	else
 		
 		redirect_to scores_path(:me => 'Nie znaleziono ankiety!')

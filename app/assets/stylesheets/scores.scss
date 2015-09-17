@@ -1,25 +1,28 @@
+
 .score {
+
+width: 500px;
+}
+h1
+{
+ margin-top: 10%;
+ margin-bottom: 10%;
+}
 form 
 {
-  width: 100%;
+
+	text-align: left;
+  
   }
-input[type=text], input[type=url], input[type=email], input[type=password], input[type=tel], textarea {
-  -webkit-appearance: none; -moz-appearance: none;
+input[type=text], input[type=url], input[type=email], input[type=password], input[type=tel], textarea, text_field, select {
+
   display: block;
-  margin: 0;
+  margin-right: 0;
   width: 100%; height: 40px;
   line-height: 40px; font-size: 17px;
   border: 1px solid #bbb;
 }
 
- select {
-
-  display: block;
-  margin: 0;
-  width: 100%; height: 40px;
-  line-height: 40px; font-size: 17px;
-  border: 1px solid #bbb;
-}
 
 [type=submit] {
  -webkit-appearance: none; -moz-appearance: none;
@@ -33,5 +36,5 @@ input[type=text], input[type=url], input[type=email], input[type=password], inpu
  border: 1px solid #bbb;
  -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;
 }
-}
+
 
