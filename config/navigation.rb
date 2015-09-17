@@ -45,7 +45,7 @@ SimpleNavigation::Configuration.run do |navigation|
   primary.item :navigation_title, 'System Ankietowania Zajęć'
   primary.item :navigation_add_lecture, 'Dodaj przedmiot', new_lectures_path
   primary.item :navigation_manage_lectures, 'Zarządzaj przedmiotami', lectures_path
-  primary.item :navigation_manage_surveys, 'Zarządzaj ankietami', '/lectures/surveys/'<<first_lecture.id.to_s
+  primary.item :navigation_manage_surveys, 'Zarządzaj ankietami', specific_surveys_path(:id => first_lecture.id)
   primary.item :navigation_statistics, 'Statystyki', root_path
   primary.item :navigation_help, 'Pomoc' 
 

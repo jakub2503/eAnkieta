@@ -6,12 +6,14 @@ class SurveysController < ApplicationController
   def index_specific
     lecture = Lecture.find(params[:id])
     @surveys = lecture.surveys
+    flash[:lecture_id_flash]= params[:id]
   end
 
   # POST /lectures/surveys/1
   # POST /lectures/surveys/1.json
   def index_specific_post
-    redirect_to '/lectures/surveys/'<<params[:lecture_id].to_s
+    flash.keep
+    redirect_to specific_surveys_path(params[:lecture_id])
   end
 
 
@@ -62,7 +64,7 @@ class SurveysController < ApplicationController
 
     respond_to do |format|
       if a==num_sur and a!=0
-        format.html { redirect_to surveys_url, notice: 'Poprawnie utworzono ankiety.' }
+        format.html { redirect_to specific_surveys_path(:id => @survey.lecture_id), notice: 'Poprawnie utworzono ankiety.' }
       else
         format.html { render :new }
         format.json { render json: @survey.errors, status: :unprocessable_entity }
@@ -89,7 +91,7 @@ class SurveysController < ApplicationController
   def destroy
     @survey.destroy
     respond_to do |format|
-      format.html { redirect_to surveys_url, notice: 'Survey was successfully destroyed.' }
+      format.html { redirect_to specific_surveys_path(:id => @survey.lecture_id), notice: 'Poprawnie usunięto ankietę.' }
       format.json { head :no_content }
     end
   end
@@ -103,6 +105,5 @@ class SurveysController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_params
       params.require(:survey).permit(:start_date, :end_date, :interval, :number_of_surveys, :lecture_id)
-      params.permit(:id)
     end
 end

@@ -2,15 +2,14 @@
 
 <h1>Zarządzanie ankietami</h1>
 
-<%= form_tag do %>
- <%= select_tag :lecture_id, options_for_select(Lecture.all.map{|s|[s.name, s.id]}, :selected => params[:id], onchange: "$(this).parent('form').submit();" ) %>
- <%= submit_tag("Go!") %>
+<%= form_tag specific_surveys_path, :id => 'lecture_selector' do %>
+ <%= select_tag :lecture_id, options_for_select(Lecture.all.map{|s|[s.name, s.id]},:selected => params[:id]),onchange: "$('#lecture_selector').submit();"  %>
 <% end %>
-
 
 <table>
   <thead>  
     <tr>
+      <th rowspan="2"></th>
       <th rowspan="2">Data zajęć</th>
       <th colspan="2">Ważność tokenu</th>
       <th rowspan="2">Token</th>
@@ -26,12 +25,17 @@
   <tbody>
     <% @surveys.each do |survey| %>
       <tr>
+        <td><input type="checkbox" /></td>
         <td><%= survey.start_date.to_date %></td>
         <td><%= survey.start_date.strftime("%H:%M") %></td>
         <td><%= survey.end_date.strftime("%H:%M") %></td>
         <td><%= survey.token %></td>
         <td><%= link_to 'Edytuj', edit_survey_path(survey) %></td>
-        <td><%= link_to 'Usuń', survey, method: :delete, data: { confirm: 'Na pewno usunąć?' } %></td>
+        <td><%= 
+            if survey.children? == false
+              link_to 'Usuń', survey, method: :delete, data: { confirm: 'Na pewno usunąć?' }
+            end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

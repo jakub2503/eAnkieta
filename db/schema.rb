@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150915191008) do
+ActiveRecord::Schema.define(version: 20150917224758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,5 +63,6 @@ ActiveRecord::Schema.define(version: 20150915191008) do
   end
 
   add_foreign_key "score_archives", "lectures"
+  add_foreign_key "scores", "surveys", column: "id_survey"
   add_foreign_key "surveys", "lectures"
 end
