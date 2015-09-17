@@ -14,6 +14,9 @@
       <td><%= lecture.year %></td>
 	  <td><%= lecture.semester %></td>
     <td><%= lecture.average_general_score %></td>
+    <td><%= lecture.average_tempo_score %></td>
+    <td><%= lecture.average_importance_score %></td>
+    <td><%= lecture.number_of_votes %></td>
 	  <td><%= link_to 'Pokaz', lecture_path(lecture) %></td>
 	  <td><%= link_to 'Edytuj', edit_lecture_path(lecture) %></td>
 	  <td><%= link_to 'Usun', delete_lecture_path(lecture),

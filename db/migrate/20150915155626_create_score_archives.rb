@@ -5,6 +5,7 @@ class CreateScoreArchives < ActiveRecord::Migration
       t.decimal :general_score, precision: 4, scale: 3
       t.decimal :tempo_score, precision: 4, scale: 3
       t.decimal :importance_score
+      t.integer :number_of_votes
 
       t.timestamps null: false
 

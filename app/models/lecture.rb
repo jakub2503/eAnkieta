@@ -17,4 +17,7 @@ class Lecture < ActiveRecord::Base
 	def average_importance_score
 		survey_statistics_summary.importance_score
 	end
+	def number_of_votes
+		survey_statistics_summary.number_of_votes
+	end
 end
