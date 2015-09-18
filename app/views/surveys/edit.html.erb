@@ -1,6 +1,5 @@
 <h1>Editing Survey</h1>
 
-<%= render 'form' %>
+<%= render 'form_edit' %>
 
-<%= link_to 'Show', @survey %> |
-<%= link_to 'Back', surveys_path %>
+<%= link_to 'Back', specific_surveys_path(:id => flash[:lecture_id_flash]) %>

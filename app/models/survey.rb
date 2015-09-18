@@ -6,8 +6,8 @@ class Survey < ActiveRecord::Base
 
 	validates :start_date, :end_date, presence: true
 
-	validates :interval, presence: true
-	validates :number_of_surveys, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 20 }
+	validates :interval, presence: true, :on => :create
+	validates :number_of_surveys, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 20 }, :on => :create
 	validate  :start_date_end_date_correct, :dates_later_than_current
   	
 

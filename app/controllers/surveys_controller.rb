@@ -30,11 +30,13 @@ class SurveysController < ApplicationController
 
   # GET /surveys/new
   def new
+    flash.keep
     @survey = Survey.new
   end
 
   # GET /surveys/1/edit
   def edit
+    flash.keep
   end
 
   # POST /surveys
@@ -75,24 +77,35 @@ class SurveysController < ApplicationController
   # PATCH/PUT /surveys/1
   # PATCH/PUT /surveys/1.json
   def update
-    respond_to do |format|
-      if @survey.update(survey_params)
-        format.html { redirect_to @survey, notice: 'Survey was successfully updated.' }
-        format.json { render :show, status: :ok, location: @survey }
-      else
-        format.html { render :edit }
-        format.json { render json: @survey.errors, status: :unprocessable_entity }
+    flash.keep
+    if @survey.children? == false
+      respond_to do |format|
+        if @survey.update(survey_params)
+          format.html { redirect_to specific_surveys_path(:id => @survey.lecture_id), notice: 'Poprawnie uaktualniono ankietę.' }
+        else
+          format.html { render :edit }
+          format.json { render json: @survey.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      format.html { redirect_to specific_surveys_path(:id => @survey.lecture_id), notice: 'Na ankietę już głosowano! Nie można jej edytować.' }
     end
   end
 
   # DELETE /surveys/1
   # DELETE /surveys/1.json
   def destroy
-    @survey.destroy
-    respond_to do |format|
-      format.html { redirect_to specific_surveys_path(:id => @survey.lecture_id), notice: 'Poprawnie usunięto ankietę.' }
-      format.json { head :no_content }
+    # if survey has no children (no student voted in the survey) proceed with destroy
+    if @survey.children? == false
+      @survey.destroy
+      respond_to do |format|
+        format.html { redirect_to specific_surveys_path(:id => @survey.lecture_id), notice: 'Poprawnie usunięto ankietę.' }
+      end
+    else
+    #if survey has children - do not destroy it and notify the user
+      respond_to do |format|
+        format.html { redirect_to specific_surveys_path(:id => @survey.lecture_id), notice: 'Na ankietę już głosowano! Nie można jej usunąć.' }
+      end
     end
   end
 

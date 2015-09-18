@@ -10,11 +10,6 @@
       </ul>
     </div>
   <% end %>
-  
-  <div class="field">
-    <%= f.label :Wykład %><br />
-    <%= f.select :lecture_id, options_for_select(Lecture.all.map{|s|[s.name, s.id]}, :selected => flash[:lecture_id_flash]) %>
-  </div>
 
   <div class="field">
 	<%= f.label :data_zajęć %><br>
@@ -26,20 +21,6 @@
 	<%= f.label :HIDDEN_end_date %><br>
     <%= f.date_select :end_date %><br>
     <%= f.time_select :end_date, :ignore_date => true %>
-  </div>
-  
-  <div class="field">
-  <%= f.label :liczba_ankiet %><br>
-    <%= f.number_field :number_of_surveys, "size" => 1, "min" => 1, "max" => 20, "value" => 1 %>
-  </div>
-  
-  <div class="field">
-  <%= f.radio_button :interval, '1', :checked => true %>
-  <%= f.label :interval, '1 tydzień', :value => '1' %>
-	<%= f.radio_button :interval, '2' %>
-	<%= f.label :interval, '2 tygodnie', :value => '2' %>
-  <%= f.radio_button :interval, '3' %>
-	<%= f.label :interval, '3 tygodnie', :value => '3' %>
   </div>
   
 

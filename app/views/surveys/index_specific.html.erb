@@ -30,7 +30,11 @@
         <td><%= survey.start_date.strftime("%H:%M") %></td>
         <td><%= survey.end_date.strftime("%H:%M") %></td>
         <td><%= survey.token %></td>
-        <td><%= link_to 'Edytuj', edit_survey_path(survey) %></td>
+        <td><%= 
+            if survey.children? == false
+              link_to 'Edytuj', edit_survey_path(survey)
+            end %>
+        </td>
         <td><%= 
             if survey.children? == false
               link_to 'Usuń', survey, method: :delete, data: { confirm: 'Na pewno usunąć?' }
