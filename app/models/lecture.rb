@@ -8,6 +8,14 @@ class Lecture < ActiveRecord::Base
 	validates :name, :year, presence: true
 	validates :year, numericality: {only_integer: true, :greater_than_or_equal_to => Time.now.year}
 
+	def surveys_children?
+		surveys.any?
+	end
+
+	def score_archives_children?
+		score_archives.any?
+	end
+
 	def average_general_score
 		survey_statistics_summary.general_score
 	end

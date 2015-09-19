@@ -16,6 +16,8 @@ Rails.application.routes.draw do
  get '/lectures/surveys/:id', to:'surveys#index_specific', as:'specific_surveys'
  post '/lectures/surveys/:id', to:'surveys#index_specific_post'
 
+
+
   get '/lectures', to:'lectures#index', as:'all_lectures'
   patch '/lectures/:id', to:'lectures#update'
   put '/lectures/:id', to:'lectures#update'
@@ -23,7 +25,15 @@ Rails.application.routes.draw do
   resource :lectures
   get '/lectures/:id', to:'lectures#show', as:'lecture'
   get '/lectures/edit/:id', to:'lectures#edit', as:'edit_lecture'
-  
+
+  get '/statistics', to:'lectures#statistics', as:'statistics'
+  get '/statistics/:id', to:'surveys#statistics_surveys', as:'statistics_surveys'
+  post '/statistics/:id', to:'surveys#statistics_surveys_post'
+  get '/statistics/:lecture_id_p/0', to:'surveys#statistics_surveys_all', as:'statistics_surveys_all'
+  post '/statistics/:lecture_id_p/0', to:'surveys#statistics_specific_post'
+  get '/statistics/:lecture_id_p/:survey_id_p', to:'surveys#statistics_specific', as:'statistics_specific'
+  post '/statistics/:lecture_id_p/:survey_id_p', to:'surveys#statistics_specific_post'
+
    root 'welcome#index'
 
   # Example of regular route:

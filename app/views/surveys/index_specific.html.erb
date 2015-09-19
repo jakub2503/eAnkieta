@@ -3,7 +3,7 @@
 <h1>Zarządzanie ankietami</h1>
 
 <%= form_tag specific_surveys_path, :id => 'lecture_selector' do %>
- <%= select_tag :lecture_id, options_for_select(Lecture.all.map{|s|[s.name, s.id]},:selected => params[:id]),onchange: "$('#lecture_selector').submit();"  %>
+ <%= select_tag :lecture_id, options_for_select(flash[:lectures_for_selector_s],:selected => params[:id]),onchange: "$('#lecture_selector').submit();"  %>
 <% end %>
 
 <table>
@@ -26,15 +26,15 @@
     <% @surveys.each do |survey| %>
       <tr>
         <td><input type="checkbox" /></td>
-        <td><%= survey.start_date.to_date %></td>
+        <td><%= survey.start_date.strftime("%d-%m-%Y") %></td>
         <td><%= survey.start_date.strftime("%H:%M") %></td>
         <td><%= survey.end_date.strftime("%H:%M") %></td>
         <td><%= survey.token %></td>
         <td><%= 
             if survey.children? == false
               link_to 'Edytuj', edit_survey_path(survey)
-            end %>
-        </td>
+            end 
+        %></td>
         <td><%= 
             if survey.children? == false
               link_to 'Usuń', survey, method: :delete, data: { confirm: 'Na pewno usunąć?' }

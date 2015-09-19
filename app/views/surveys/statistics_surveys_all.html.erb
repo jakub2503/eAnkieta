@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Statystyki</h1>
+
+<%= form_tag statistics_surveys_all_path, :id => 'lecture_selector' do %>
+ <%= select_tag :lecture_id, options_for_select(flash[:lectures_for_selector],:selected => params[:lecture_id_p]),onchange: "$('#lecture_selector').submit();"  %>
+ <%= select_tag :survey_id, options_for_select(flash[:surveys_for_selector],:selected => 0),onchange: "$('#lecture_selector').submit();"  %>
+<% end %>
+
+<p id = "number_of_votes">
+  Głosów:
+<%= @survey.first.lecture.number_of_votes %>
+</p>
+<p id = "general_score">
+<%= @survey.first.lecture.average_general_score %>
+</p>
+<p id = "tempo_score">
+<%= @survey.first.lecture.average_tempo_score %>
+</p>
+<p id = "importance_score">
+<%= @survey.first.lecture.average_importance_score %>
+</p>
+<p id = "comments">
+Komentarze
+<%= @survey.map{|item| item.number_of_comments}.reduce(0, :+) %>
+</p>
+
+<br>
+
+<%= link_to 'Powrót', statistics_surveys_path(:id => params[:lecture_id_p]) %>

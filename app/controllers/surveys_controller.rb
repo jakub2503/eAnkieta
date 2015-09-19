@@ -4,17 +4,97 @@ class SurveysController < ApplicationController
   # GET /lectures/surveys/1
   # GET /lectures/surveys/1.json
   def index_specific
+
+      lectures_for_selector_s = Array.new
+      lectures_temp = Lecture.all.order(updated_at: :desc)
+      lectures_temp.each do |lecture|
+        if lecture.score_archives_children? == false
+          lectures_for_selector_s.push([lecture.name, lecture.id])
+        end
+      end
+      flash[:lectures_for_selector_s] = lectures_for_selector_s
+
     lecture = Lecture.find(params[:id])
-    @surveys = lecture.surveys
+    @surveys = lecture.surveys.order(start_date: :desc)
     flash[:lecture_id_flash]= params[:id]
   end
 
   # POST /lectures/surveys/1
   # POST /lectures/surveys/1.json
   def index_specific_post
-    flash.keep
     redirect_to specific_surveys_path(params[:lecture_id])
   end
+
+  # GET /statistics/1
+  # GET /statistics/1.json
+  def statistics_surveys
+      lectures_for_selector = Array.new
+      lectures_temp = Lecture.all.order(updated_at: :desc)
+      lectures_temp.each do |lecture|
+        if lecture.surveys_children? and lecture.number_of_votes > 0
+          lectures_for_selector.push([lecture.name, lecture.id])
+        end
+      end
+      flash[:lectures_for_selector] = lectures_for_selector
+    @lecture = Lecture.find(params[:id])
+    @surveys = @lecture.surveys.order(start_date: :desc)
+  end
+
+  # POST /statistics/1
+  # POST /statistics/1.json
+  def statistics_surveys_post
+    redirect_to statistics_surveys_path(params[:lecture_id])
+  end
+
+  # GET /statistics/1/1
+  # GET /statistics/1.json/1.json
+  def statistics_specific
+    flash.keep
+    lecture = Lecture.find(params[:lecture_id_p])
+      
+      surveys_for_selector = Array.new
+      surveys_for_selector.push(['Wszystkie', 0])
+      surveys_temp = lecture.surveys.order(start_date: :desc)
+      surveys_temp.each do |survey|
+        if survey.children? and survey.number_of_votes > 0
+          surveys_for_selector.push([survey.start_date.strftime("%d-%m-%Y"), survey.id])
+        end
+      end
+      flash[:surveys_for_selector] = surveys_for_selector
+      @survey = lecture.surveys.find(params[:survey_id_p])
+  end
+
+  # POST /statistics/1/1
+  # POST /statistics/1.json/1.json
+  def statistics_specific_post
+    flash.keep
+    if params[:lecture_id_p] != params[:lecture_id]
+      redirect_to statistics_surveys_all_path(params[:lecture_id])
+    else
+      redirect_to statistics_specific_path(params[:lecture_id], params[:survey_id])
+    end
+  end
+
+  # GET /statistics/1/0
+  # GET /statistics/1.json/0.json
+  def statistics_surveys_all
+    flash.keep
+    lecture = Lecture.find(params[:lecture_id_p])
+      
+      surveys_for_selector = Array.new
+      surveys_for_selector.push(['Wszystkie', 0])
+      surveys_temp = lecture.surveys.order(start_date: :desc)
+      surveys_temp.each do |survey|
+        if survey.children? and survey.number_of_votes > 0
+          surveys_for_selector.push([survey.start_date.strftime("%d-%m-%Y"), survey.id])
+        end
+      end
+      flash[:surveys_for_selector] = surveys_for_selector
+
+      @survey = lecture.surveys.order(start_date: :desc)
+  end
+
+
 
 
   # GET /surveys
@@ -42,6 +122,7 @@ class SurveysController < ApplicationController
   # POST /surveys
   # POST /surveys.json
   def create
+    flash.keep
     num_sur = survey_params[:number_of_surveys].to_i
     a=0
 

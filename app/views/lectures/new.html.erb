@@ -1,7 +1,6 @@
 <h1>Tworzenie nowego przedmiotu</h1>
 
 
-<%= link_to 'Lista przedmiotow', controller: 'lectures' %><br>
 <%= form_for :lecture, url: lectures_path do |f| %>
 
 <% if @lecture.errors.any? %>
@@ -35,3 +34,5 @@
 	<%= f.submit :"Dodaj przedmiot"%><br>
 </p>
 <% end %>
+
+<%= link_to 'Powrót', controller: 'lectures' %><br>

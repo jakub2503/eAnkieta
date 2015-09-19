@@ -36,8 +36,16 @@ SimpleNavigation::Configuration.run do |navigation|
   
   # If this option is set to true, all item names will be considered as safe (passed through html_safe). Defaults to false.
   #navigation.consider_item_names_as_safe = false
+  lecture_navigation=-1
+  lectures_temp = Lecture.all.order(updated_at: :desc)
+  lectures_temp.each do |lecture|
+    if lecture.score_archives_children? == false
+      lecture_navigation = lecture.id
+      break
+    end
+  end
 
-  first_lecture = Lecture.first
+
 
   # Define the primary navigation
   navigation.items do |primary|
@@ -45,14 +53,11 @@ SimpleNavigation::Configuration.run do |navigation|
   primary.item :navigation_title, 'System Ankietowania Zajęć'
   primary.item :navigation_add_lecture, 'Dodaj przedmiot', new_lectures_path
   primary.item :navigation_manage_lectures, 'Zarządzaj przedmiotami', lectures_path
-  primary.item :navigation_manage_surveys, 'Zarządzaj ankietami', specific_surveys_path(:id => first_lecture.id)
-  primary.item :navigation_statistics, 'Statystyki', root_path
+  primary.item :navigation_manage_surveys, 'Zarządzaj ankietami', specific_surveys_path(:id => lecture_navigation), if: proc { lecture_navigation != -1 }
+  primary.item :navigation_statistics, 'Statystyki', statistics_path
   primary.item :navigation_help, 'Pomoc' 
 
   primary.item :TEMP, '=================='
-  primary.item :navigation_subject, 'Przedmioty', lectures_path
-  primary.item :navigation_survey, 'Ankiety', surveys_path
-  primary.item :navigation_statistics, 'Statystyki', root_path
   primary.item :navigation_scores, 'GLOSUJ', scores_path
   
   end

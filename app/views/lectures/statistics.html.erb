@@ -1,0 +1,38 @@
+<h1>Statystyki</h1>
+ 
+<table>
+  <tr>
+    <th>Przedmiot</th>
+    <th>Rok</th>
+	  <th>Semestr</th>
+    <th>Wrażenie ogólne</th>
+    <th>Tempo</th>
+    <th>Pożyteczność wiedzy</th>
+    <th>Głosów</th>
+
+  </tr>
+ 
+  <% @all_lectures.each do |lecture| %>
+    <tr>
+      <td><%= lecture.name %></td>
+      <td><%= lecture.year %></td>
+	    <td><%=
+          if lecture.semester =='Z'
+            'Zimowy'
+          else
+            'Letni'
+          end
+      %></td>
+      <td><%= lecture.average_general_score %></td>
+      <td><%= lecture.average_tempo_score %></td>
+      <td><%= lecture.average_importance_score %></td>
+      <td><%= lecture.number_of_votes %></td>
+
+      <td><%=
+          if lecture.surveys_children? and lecture.number_of_votes > 0
+            link_to '=>', statistics_surveys_path(:id => lecture.id)
+          end 
+      %></td>         
+    </tr>
+  <% end %>
+</table>

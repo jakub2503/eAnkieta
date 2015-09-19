@@ -3,6 +3,12 @@ class LecturesController < ApplicationController
 	def index
 		@all_lectures = Lecture.all
 	end
+
+
+	def statistics
+		@all_lectures = Lecture.all
+	end
+
 	
 	def new
 		@lecture = Lecture.new
@@ -15,7 +21,7 @@ class LecturesController < ApplicationController
 	def update
 		@lecture = Lecture.find(params[:id])
 		if @lecture.update(lecture_params)
-			redirect_to @lecture
+			redirect_to all_lectures_path
 		else
 			render 'edit'
 		end
@@ -24,7 +30,7 @@ class LecturesController < ApplicationController
 	def create
 		@lecture = Lecture.new(lecture_params)
 		if @lecture.save
-			redirect_to @lecture
+			redirect_to all_lectures_path
 		else
 			render 'new'
 		end

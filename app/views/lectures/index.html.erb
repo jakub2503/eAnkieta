@@ -3,25 +3,40 @@
  
 <table>
   <tr>
-    <th>Nazwa</th>
+    <th>Przedmiot</th>
     <th>Rok</th>
-	<th>Semestr</th>
+	  <th>Semestr</th>
+
   </tr>
  
   <% @all_lectures.each do |lecture| %>
     <tr>
       <td><%= lecture.name %></td>
       <td><%= lecture.year %></td>
-	  <td><%= lecture.semester %></td>
-    <td><%= lecture.average_general_score %></td>
-    <td><%= lecture.average_tempo_score %></td>
-    <td><%= lecture.average_importance_score %></td>
-    <td><%= lecture.number_of_votes %></td>
-	  <td><%= link_to 'Pokaz', lecture_path(lecture) %></td>
-	  <td><%= link_to 'Edytuj', edit_lecture_path(lecture) %></td>
-	  <td><%= link_to 'Usun', delete_lecture_path(lecture),
+	    <td><%=
+          if lecture.semester =='Z'
+            'Zimowy'
+          else
+            'Letni'
+          end
+      %></td>
+      <td><%=
+          if lecture.score_archives_children? == false
+            link_to 'Ankiety', specific_surveys_path(:id => lecture.id)
+          end 
+      %></td>
+	    <td><%=
+          if lecture.surveys_children? == false and lecture.score_archives_children? == false
+            link_to 'Edytuj', edit_lecture_path(lecture)
+          end 
+      %></td>
+	    <td><%= 
+          if lecture.surveys_children? == false and lecture.score_archives_children? == false
+            link_to 'Usuń', delete_lecture_path(lecture),
               method: :delete,
-              data: { confirm: 'Czy na pewno chcesz usunac ten przedmiot?' } %></td>
+              data: { confirm: 'Czy na pewno chcesz usunac ten przedmiot?' } 
+          end 
+      %></td>          
     </tr>
   <% end %>
 </table>

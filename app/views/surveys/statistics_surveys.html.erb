@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Statystyki</h1>
+
+<%= form_tag statistics_surveys_path, :id => 'lecture_selector' do %>
+ <%= select_tag :lecture_id, options_for_select(flash[:lectures_for_selector],:selected => params[:id]),onchange: "$('#lecture_selector').submit();"  %>
+<% end %>
+
+<table>
+  <thead>  
+    <tr>
+      <th>Data zajęć</th>
+      <th>Wrażenie ogólne</th>
+      <th>Tempo</th>
+      <th>Pożyteczność wiedzy</th>
+      <th>Komentarzy</th>
+      <th>Głosów</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @surveys.each do |survey| %>
+      <tr>
+        <td><%= survey.start_date.strftime("%d-%m-%Y") %></td>
+        <td><%= survey.average_general_score.to_f.round(2) %></td>
+        <td><%= survey.average_tempo_score.to_f.round(2) %></td>
+        <td><%= survey.average_importance_score.to_f.round(2) %></td>
+        <td><%= survey.number_of_comments %></td>
+        <td><%= survey.number_of_votes %></td>
+        <td><%= 
+          if survey.number_of_votes > 0
+            link_to '=>', statistics_specific_path(:lecture_id_p => params[:id], :survey_id_p => survey.id) 
+          end
+        %></td>
+      </tr>
+    <% end %>
+      <tr id="general_statistics">
+        <td>Ogółem</td>
+        <td><%= @lecture.average_general_score %></td>
+        <td><%= @lecture.average_tempo_score %></td>
+        <td><%= @lecture.average_importance_score %></td>
+        <td><%= @surveys.map{|item| item.number_of_comments}.reduce(0, :+) %></td>
+        <td><%= @lecture.number_of_votes %></td>
+        <td><%=
+          if @lecture.number_of_votes > 0
+            link_to '=>', statistics_surveys_all_path(:lecture_id_p => params[:id])
+          end 
+        %></td>
+      </tr>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Powrót', statistics_path %>

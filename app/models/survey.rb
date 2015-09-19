@@ -8,8 +8,24 @@ class Survey < ActiveRecord::Base
 
 	validates :interval, presence: true, :on => :create
 	validates :number_of_surveys, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 20 }, :on => :create
-	validate  :start_date_end_date_correct, :dates_later_than_current
+	validate  :start_date_end_date_correct, :dates_later_than_current, :is_valid_datetime
   	
+  	def average_general_score
+  		scores.average(:general_score)
+  	end
+  	def average_tempo_score
+  		scores.average(:tempo_score)
+  	end
+  	def average_importance_score
+  		scores.average(:importance_score)
+  	end
+  	def number_of_comments
+  		#scores.where("COALESCE(comment,'') = ?", '').count
+  		scores.where("comment != ?",' ').count
+  	end
+  	def number_of_votes
+  		scores.count
+  	end
 
 	def children?
     	scores.any?
@@ -22,13 +38,13 @@ class Survey < ActiveRecord::Base
  	end
 
  	def dates_later_than_current
- 		if end_date < Time.now
+ 		if start_date < Time.now
  			errors.add(:base, 'Nie można tworzyć ankiet w przeszłości!')
  		end
  	end
 
  	def is_valid_datetime
-    	errors.add(:base ,'Data nie istnieje!') if ((DateTime.parse(start_date) rescue ArgumentError) == ArgumentError or (DateTime.parse(end_date) rescue ArgumentError) == ArgumentError)
+    	errors.add(:base ,'Data nie istnieje!') if (Date.valid_date?(start_date.year,start_date.month,start_date.mday) == false)
   	end
 
 
