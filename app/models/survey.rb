@@ -21,7 +21,7 @@ class Survey < ActiveRecord::Base
   	end
   	def number_of_comments
   		#scores.where("COALESCE(comment,'') = ?", '').count
-  		scores.where("comment != ?",' ').count
+  		scores.where("comment != ?",'').count
   	end
   	def number_of_votes
   		scores.count
