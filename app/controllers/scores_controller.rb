@@ -19,21 +19,21 @@ class ScoresController < ApplicationController
     # POST /scores/new
   def new_post
 	
-	if  Survey.exists?(token: params[:survey][:token]) == true
-		params[:temp_s] = Survey.find_by "token = '"+params[:survey][:token]+"'"
-		if Time.now >= params[:temp_s][:start_date] and Time.now <= params[:temp_s][:end_date]
-			@survey_id = params[:temp_s][:id]
-			@score = Score.new
-			params[:temp_l]= Lecture.find(params[:temp_s][:lecture_id])
-			@lecture_name = params[:temp_l][:name] + " " + params[:temp_l][:year].to_s
-			render :layout => false
-		else		
-			redirect_to scores_path(:me => 'Nie znaleziono ankiety!')
-		end
-	else
-		
-		redirect_to scores_path(:me => 'Nie znaleziono ankiety!')
-	end
+  	if  Survey.exists?(token: params[:survey][:token]) == true
+  		params[:temp_s] = Survey.find_by(token: params[:survey][:token])
+  		if Time.now >= params[:temp_s].start_date and Time.now <= params[:temp_s].end_date
+  			@survey_id = params[:temp_s].id
+  			@score = Score.new
+  			params[:temp_l]= Lecture.find(params[:temp_s].lecture_id)
+  			@lecture_name = params[:temp_l].name + " " + params[:temp_l].year.to_s
+  			render :layout => false
+  		else		
+  			redirect_to scores_path(:me => 'Nie znaleziono ankiety!')
+  		end
+  	else
+  		
+  		redirect_to scores_path(:me => 'Nie znaleziono ankiety!')
+  	end
   end
 
 
@@ -73,6 +73,6 @@ class ScoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def score_params
-      params.require(:score).permit(:id_survey, :general_score, :tempo_score, :importance_score, :comment)
+      params.require(:score).permit(:survey_id, :general_score, :tempo_score, :importance_score, :comment)
     end
 end
