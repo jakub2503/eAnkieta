@@ -1,10 +1,17 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Statystyki</h1>
-
-<%= form_tag statistics_surveys_path, :id => 'lecture_selector' do %>
- <%= select_tag :lecture_id, options_for_select(flash[:lectures_for_selector],:selected => params[:id]),onchange: "$('#lecture_selector').submit();"  %>
+<% content_for :title do %>
+  Statystyki
 <% end %>
+<% content_for :selectors do %>
+  <div class="selector">
+    <%= form_tag statistics_surveys_path, :id => 'lecture_selector' do %>
+      <div class="styled_select">
+        <%= select_tag :lecture_id, options_for_select(flash[:lectures_for_selector],:selected => params[:id]),onchange: "$('#lecture_selector').submit();"  %>
+      </div>
+<% end %>
+  </div>
+<% end %>
+
+<p id="notice"><%= notice %></p>
 
 <table>
   <thead>  
@@ -27,9 +34,9 @@
         <td><%= survey.average_importance_score.to_f.round(2) %></td>
         <td><%= survey.number_of_comments %></td>
         <td><%= survey.number_of_votes %></td>
-        <td><%= 
+        <td class="link"><%= 
           if survey.number_of_votes > 0
-            link_to '=>', statistics_specific_path(:lecture_id_p => params[:id], :survey_id_p => survey.id) 
+            link_to '=>', statistics_specific_path(:lecture_id_p => params[:id], :survey_id_p => survey.id), { :class=>"goto" }
           end
         %></td>
       </tr>
@@ -41,15 +48,15 @@
         <td><%= @lecture.average_importance_score %></td>
         <td><%= @surveys.map{|item| item.number_of_comments}.reduce(0, :+) %></td>
         <td><%= @lecture.number_of_votes %></td>
-        <td><%=
+        <td class="link"><%=
           if @lecture.number_of_votes > 0
-            link_to '=>', statistics_surveys_all_path(:lecture_id_p => params[:id])
+            link_to '=>', statistics_surveys_all_path(:lecture_id_p => params[:id]), { :class=>"goto" }
           end 
         %></td>
       </tr>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'Powrót', statistics_path %>
+<% content_for :links do %>
+  <%= link_to 'Powrót', statistics_path, { :class=>"button right" } %>
+<% end %>

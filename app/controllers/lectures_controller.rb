@@ -1,5 +1,7 @@
 class LecturesController < ApplicationController
 	
+	layout :define_layout
+
 	def index
 		@all_lectures = Lecture.all
 	end
@@ -51,5 +53,15 @@ class LecturesController < ApplicationController
 	def lecture_params
 		params.require(:lecture).permit(:name,:year,:semester)
 	end
+
+	def define_layout
+    # Check if logged in, because current_user could be nil.
+      #if logged_in? and current_user.is_able_to('siteadmin')
+        #{}"admin"
+      #else
+        #{}"application"
+      #end
+      "user"
+    end
 	
 end

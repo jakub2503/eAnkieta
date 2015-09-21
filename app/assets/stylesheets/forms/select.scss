@@ -1,0 +1,96 @@
+/* SELECT */
+
+.selector {
+	height: 34px;
+	margin-right:5px;
+	max-width: 60%;
+	float:left;
+}
+
+.selector * {
+	max-width: 100%;
+}
+
+
+.selector2 {
+	height: 34px;
+	margin-left:5px;
+	max-width: 40%;
+	float:right;
+}
+
+.selector2 * {
+	max-width: 100%;
+}
+
+.styled_select {
+    display:inline-block;
+    height:34px;
+	border-radius	: 0px;
+	border: solid 2px $title-border;
+	overflow: hidden;
+	position: relative;
+}
+
+.styled_select select {
+    -webkit-appearance: none;
+   	-moz-appearance: none;
+   	appearance: none;
+   	border-radius: 0;
+    border:0;
+    height: 34px;
+	cursor			: pointer;
+	background		: transparent;
+	font-size		: 16px;
+	font-weight		: bold;
+	color: $font-dark;
+	padding-right: 34px;
+}
+
+/* Styling using span element class arrow - image */
+/*
+.arrow {
+	background : asset-url("arrow.jpg") no-repeat right -1px;
+    display:block; 
+    width:33px; 
+    height:33px;
+    position:absolute; 
+    right:0;
+    top:0;
+    pointer-events:none;
+}
+*/
+
+/*Styling using ::after selector (pseudo element);*/
+
+.styled_select:after {
+  content: asset-url("arrow.jpg");
+  display: block;
+  position: absolute;
+  right: -1px;
+  top: 0px;
+  height: 33px;
+  width: 33px;
+  background: $normal-gray;
+  pointer-events:none;
+}
+
+
+/* styling using after - no image */
+/*
+.styled_select:after {
+    content:'>';
+    color: $font-dark;
+    border-bottom:1px dotted $font-dark;
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform:rotate(90deg);
+    right:6px; top:2px;
+    font-size: 22px;
+    padding:0;
+    font-weight: bolder;
+    position:absolute;
+    pointer-events:none;
+}
+*/

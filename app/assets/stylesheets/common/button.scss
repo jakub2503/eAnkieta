@@ -1,0 +1,15 @@
+.button {
+	color: $font-dark;
+	background-color: $button-bg;
+  	text-decoration: none;
+  	text-align: center;
+  	margin: 5px 10px;
+  	padding: 2px 6px;
+  	font-weight: bold;
+  	font-size: 14px;
+  	border: 2px outset $button-border;
+}
+
+.button:active {
+  	border-style: inset;
+}

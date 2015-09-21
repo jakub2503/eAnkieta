@@ -1,5 +1,6 @@
-<h1>Lista przedmiotow</h1>
- <%= link_to 'Dodaj nowy przedmiot', new_lectures_path %><br>
+<% content_for :title do %>
+  Lista przedmiotow
+<% end %>
  
 <table>
   <tr>
@@ -20,23 +21,28 @@
             'Letni'
           end
       %></td>
-      <td><%=
+      <td class="link"><%=
           if lecture.score_archives_children? == false
-            link_to 'Ankiety', specific_surveys_path(:id => lecture.id)
+            link_to 'Ankiety', specific_surveys_path(:id => lecture.id), { :class=>"goto" }
           end 
       %></td>
-	    <td><%=
+	    <td class="link"><%=
           if lecture.surveys_children? == false and lecture.score_archives_children? == false
-            link_to 'Edytuj', edit_lecture_path(lecture)
+            link_to 'Edytuj', edit_lecture_path(lecture), { :class=>"goto" }
           end 
       %></td>
-	    <td><%= 
+	    <td class="link"><%= 
           if lecture.surveys_children? == false and lecture.score_archives_children? == false
             link_to 'Usuń', delete_lecture_path(lecture),
               method: :delete,
-              data: { confirm: 'Czy na pewno chcesz usunac ten przedmiot?' } 
+              data: { confirm: 'Czy na pewno chcesz usunac ten przedmiot?' },
+              class: "delete" 
           end 
       %></td>          
     </tr>
   <% end %>
 </table>
+
+<% content_for :links do %>
+  <%= link_to 'Dodaj nowy przedmiot', new_lectures_path, { :class=>"button right" } %>
+<% end %>

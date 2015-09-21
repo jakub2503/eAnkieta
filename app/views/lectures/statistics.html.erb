@@ -1,4 +1,6 @@
-<h1>Statystyki</h1>
+<% content_for :title do %>
+Statystyki
+<% end %>
  
 <table>
   <tr>
@@ -28,9 +30,9 @@
       <td><%= lecture.average_importance_score %></td>
       <td><%= lecture.number_of_votes %></td>
 
-      <td><%=
+      <td class="link"><%=
           if lecture.surveys_children? and lecture.number_of_votes > 0
-            link_to '=>', statistics_surveys_path(:id => lecture.id)
+            link_to '=>', statistics_surveys_path(:id => lecture.id), { :class => "goto"}
           end 
       %></td>         
     </tr>

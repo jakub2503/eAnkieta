@@ -1,0 +1,44 @@
+/* TABLE ELEMENTS */
+
+table {
+	clear: both;
+	border-collapse: collapse;
+	text-align: center;
+	margin: auto;
+}
+
+table td {
+	padding:5px;
+	border: solid 2px $title-border;
+}
+
+table td.link {
+	padding:5px;
+	border: none;
+
+}
+
+table a {
+	text-decoration: none;
+	color: $title-fcolor;
+	font-weight: bold;
+}
+
+table th,
+table tr.summary_row * {
+	padding: 5px;
+	font-weight: bold;
+	max-width: 110px;
+	border: none;
+	color: $font-dark;
+}
+
+table td.link .edit:hover,
+table td.link .delete:hover,
+table td.link .goto:hover {
+  color: $font-dark;
+}
+
+table td.link .delete {
+  color:$link-delete ;
+}

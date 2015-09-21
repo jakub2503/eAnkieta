@@ -1,0 +1,73 @@
+/* GENERAL */
+
+body {
+	min-width: 1000px;
+}
+
+#notice {
+  clear: both;
+}
+
+.data {
+	min-width: 500px;
+}
+
+.content {
+	position: relative;
+	top:10px;
+	overflow:hidden;
+	min-width: 800px;
+	color: $font-dark;
+}
+
+.container {
+	margin: auto;
+	width: 80%;
+	text-align: center;
+}
+
+.container * {
+	max-width: 100%;
+}
+
+.title {
+	background-color: $title-bg;
+	border-top: 2px solid $title-border;
+	border-bottom: 2px solid $title-border;
+	font-size: 22px;
+	font-weight: bold;
+	color: $title-fcolor;
+	padding: 0px;
+	padding-left: 10px;
+	margin: 0px;
+	line-height: 0%;
+	text-align: left;
+}
+
+.footer {
+	background-color: $title-bg;
+	border-top: 2px solid $title-border;
+	border-bottom: 2px solid $title-border;
+	padding: 0px;
+	margin: 10px 0px 0px 0px;
+	min-height: 40px;
+	display: inline-block;
+	width: 100%;
+}
+
+.inner_content {
+	display:inline-block;
+	margin: 10px auto;
+}
+
+.right {
+	float:right;
+}
+
+.left {
+	float:left;
+}
+
+.clear_both {
+	clear: both;
+}
