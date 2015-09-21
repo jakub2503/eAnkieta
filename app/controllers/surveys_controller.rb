@@ -1,5 +1,6 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
+  layout :define_layout
 
   # GET /lectures/surveys/1
   # GET /lectures/surveys/1.json
@@ -199,5 +200,15 @@ class SurveysController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_params
       params.require(:survey).permit(:start_date, :end_date, :interval, :number_of_surveys, :lecture_id)
+    end
+
+    def define_layout
+    # Check if logged in, because current_user could be nil.
+      #if logged_in? and current_user.is_able_to('siteadmin')
+        #{}"admin"
+      #else
+        #{}"application"
+      #end
+      "user"
     end
 end

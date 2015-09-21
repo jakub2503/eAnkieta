@@ -1,0 +1,413 @@
+/*
+	blue - nav tlo: #587C9C;
+	blue - ciemniejsze: #2A4E6E;
+	napis big: #CFD9E5;
+	napis small: #DCEFFD;
+	ciemny pasek: #2E3235;
+
+	Main:
+	napis blue ciemny: #264D6E;
+	tlo - header: #D6DEE1;
+	obwodka - header: #9DB6CC;
+	
+	jasne tlo/cos: #DFE4E7;
+	jasne tlo/cos/button: #F7F8FA;
+	gray-obwodka-button: #888C8F;
+	
+	ciemny napis: #343434;
+
+
+*/
+
+#nav {
+	background-color: #587C9C;
+	float:left;
+	margin:10px;
+	color: #DCEFFD;
+	width: 170px;
+}
+
+#nav ul {
+	list-style: none;
+	margin: 0;
+  	padding: 0;
+  	line-height: 1;
+  	zoom: 1;
+}
+/* width - animation (bottom)
+
+#nav a {
+  color: #DCEFFD;
+  text-decoration: none;
+  display: block;
+  padding: 15px 25px 15px 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  position: relative;
+  -webkit-transition: color .25s;
+  -moz-transition: color .25s;
+  -ms-transition: color .25s;
+  -o-transition: color .25s;
+  transition: color .25s;
+}
+
+#nav ul li a:hover {
+  color: #333333;
+}
+#nav ul li a:hover:before {
+  width: 100%;
+}
+
+#nav ul li a:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  background: #333333;
+  -webkit-transition: width .25s;
+  -moz-transition: width .25s;
+  -ms-transition: width .25s;
+  -o-transition: width .25s;
+  transition: width .25s;
+}
+*/
+
+
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+/* NAVIGATION BAR */
+
+#nav a {
+  color: #DCEFFD;
+  text-decoration: none;
+  display: block;
+  padding: 15px 25px 15px 10px;
+  font-weight: 700;
+  font-size: 14px;
+  position: relative;
+  -webkit-transition: color .5s;
+  -moz-transition: color .5s;
+  -ms-transition: color .5s;
+  -o-transition: color .5s;
+  transition: color .5s;
+}
+
+
+#nav ul li a:hover {
+  color: #2E3235;
+}
+
+#nav ul li a:hover:before {
+  height: 100%;
+}
+
+#nav ul li a:before {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 0px;
+  width: 3px;
+  background: #333333;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+  -ms-transition: height .5s;
+  -o-transition: height .5s;
+  transition: height .5s;
+}
+
+
+
+
+
+#nav ul li.last > a:after,
+#nav ul li:last-child > a:after {
+  display: none;
+}
+#nav ul li.active a {
+  color: #333333;
+}
+#nav ul li.active a:before {
+  width: 100%;
+}
+
+
+#nav li#navigation_title {
+	background-color: #2A4E6E;
+	color: #CFD9E5;
+	font-size: 22px;
+	padding: 10px 0px 20px 10px;
+	font-weight: bold;
+	line-height: 130%;
+	position:relative;
+}
+
+#nav li#navigation_title:after {
+	content: "";
+  	display: block;
+  	position: absolute;
+  	left: 5%;
+  	bottom: 5px;
+  	height: 4px;
+  	width: 90%;
+ 	background: #2E3235;
+  	opacity: 1;
+}
+
+#nav li#navigation_title:before {
+	content: "";
+  	display: block;
+  	position: absolute;
+  	left: 10%;
+  	bottom: 4px;
+  	height: 1px;
+  	width: 80%;
+ 	background: #CFD9E5;
+  	opacity: 1;
+}
+
+
+
+/* GENERAL */
+
+body {
+	min-width: 1000px;
+}
+
+#notice {
+  clear: both;
+}
+
+.content {
+	position: relative;
+	top:10px;
+	overflow:hidden;
+	min-width: 800px;
+	color: #343434;
+}
+
+.container {
+	margin: auto;
+	width: 80%;
+	text-align: center;
+}
+
+.container * {
+	max-width: 100%;
+}
+
+.title {
+	background-color: #D6DEE1;
+	border-top: 2px solid #9DB6CC;
+	border-bottom: 2px solid #9DB6CC;
+	font-size: 22px;
+	font-weight: bold;
+	color: #264D6E;
+	padding: 0px;
+	padding-left: 10px;
+	margin: 0px;
+	line-height: 0%;
+	text-align: left;
+}
+
+.footer {
+	background-color: #D6DEE1;
+	border-top: 2px solid #9DB6CC;
+	border-bottom: 2px solid #9DB6CC;
+	padding: 0px;
+	margin: 10px 0px 0px 0px;
+	min-height: 40px;
+	display: inline-block;
+	width: 100%;
+}
+
+.inner_content {
+	display:inline-block;
+	margin: 10px auto;
+}
+
+
+
+.button {
+	float:right;
+	color: #343434;
+	background-color: #F7F8FA;
+  	text-decoration: none;
+  	text-align: center;
+  	margin: 5px 10px;
+  	padding: 2px 6px;
+  	font-weight: bold;
+  	font-size: 14px;
+  	border: 2px outset #888C8F;
+}
+
+.button:active {
+  	border-style: inset;
+}
+
+
+/* TABLE ELEMENTS */
+
+table {
+	clear: both;
+	border-collapse: collapse;
+	text-align: center;
+	margin: auto;
+}
+
+table td {
+	padding:5px;
+	border: solid 2px #9DB6CC;
+}
+
+table td.link {
+	padding:5px;
+	border: none;
+
+}
+
+table a {
+	text-decoration: none;
+	color: #264D6E;
+	font-weight: bold;
+}
+
+table th,
+table tr.summary_row * {
+	padding: 5px;
+	font-weight: bold;
+	max-width: 110px;
+	border: none;
+	color: #343434;
+}
+
+table td.link .edit:hover,
+table td.link .delete:hover {
+  color: #343434;
+}
+
+table td.link .delete {
+  color:#B94F39 ;
+}
+
+
+
+
+/* FORM ELEMENTS */
+
+
+/* SELECT */
+
+.selector {
+	height: 34px;
+	margin-right:5px;
+	max-width: 60%;
+	float:left;
+}
+
+.selector * {
+	max-width: 100%;
+}
+
+
+.selector2 {
+	height: 34px;
+	margin-left:5px;
+	max-width: 40%;
+	float:right;
+}
+
+.selector2 * {
+	max-width: 100%;
+}
+
+
+
+
+.styled_select {
+    display:inline-block;
+    height:34px;
+	border-radius	: 0px;
+	border: solid 2px #9DB6CC;
+	overflow: hidden;
+	position: relative;
+}
+
+.styled_select select {
+    -webkit-appearance: none;
+   	-moz-appearance: none;
+   	appearance: none;
+   	border-radius: 0;
+    border:0;
+    height: 34px;
+	cursor			: pointer;
+	background		: transparent;
+	font-size		: 16px;
+	font-weight		: bold;
+	color: #343434;
+	padding-right: 34px;
+}
+
+/* Styling using span element class arrow - image */
+/*
+.arrow {
+	background : asset-url("arrow.jpg") no-repeat right -1px;
+    display:block; 
+    width:33px; 
+    height:33px;
+    position:absolute; 
+    right:0;
+    top:0;
+    pointer-events:none;
+}
+*/
+
+/*Styling using ::after selector (pseudo element);*/
+
+.styled_select:after {
+  content: asset-url("arrow.jpg");
+  display: block;
+  position: absolute;
+  right: -1px;
+  top: 0px;
+  height: 33px;
+  width: 33px;
+  background: #000000;
+  pointer-events:none;
+}
+
+
+/* styling using after - no image */
+/*
+.styled_select:after {
+    content:'>';
+    color: #343434;
+    border-bottom:1px dotted #343434;
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform:rotate(90deg);
+    right:6px; top:2px;
+    font-size: 22px;
+    padding:0;
+    font-weight: bolder;
+    position:absolute;
+    pointer-events:none;
+}
+*/
+
+
+
+/*      */

@@ -55,7 +55,7 @@ SimpleNavigation::Configuration.run do |navigation|
   primary.item :navigation_manage_lectures, 'Zarządzaj przedmiotami', lectures_path
   primary.item :navigation_manage_surveys, 'Zarządzaj ankietami', specific_surveys_path(:id => lecture_navigation), if: proc { lecture_navigation != -1 }
   primary.item :navigation_statistics, 'Statystyki', statistics_path
-  primary.item :navigation_help, 'Pomoc' 
+  primary.item :navigation_help, 'Pomoc' , root_path
 
   primary.item :TEMP, '=================='
   primary.item :navigation_scores, 'GLOSUJ', scores_path
