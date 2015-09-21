@@ -24,5 +24,7 @@ module Eankieta
     config.active_record.raise_in_transactional_callbacks = true
     config.action_dispatch.default_headers = {'X-Frame-Options' => 'ALLOWALL'}
     #response.headers["X-FRAME-OPTIONS"] = "ALLOW-FROM http://some-origin.com"
+    config.time_zone = 'Warsaw' 
+    config.active_record.default_timezone = :local
   end
 end
