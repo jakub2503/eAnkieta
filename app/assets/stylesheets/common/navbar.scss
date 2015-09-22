@@ -43,11 +43,10 @@
 */
 
 #nav {
-  background-color: $nav-lightblue;
-  float:left;
-  margin:10px;
+  margin:0px 10px;
   color: $nav-fcolor;
   width: 170px;
+  float: left;
 }
 
 #nav ul {
@@ -56,6 +55,8 @@
     padding: 0;
     line-height: 1;
     zoom: 1;
+    background-color: $nav-lightblue;
+
 }
 
 
@@ -119,6 +120,7 @@
 	font-weight: bold;
 	line-height: 130%;
 	position:relative;
+  display: block;
 }
 
 

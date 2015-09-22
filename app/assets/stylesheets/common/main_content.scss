@@ -1,64 +1,62 @@
 /* GENERAL */
 
 body {
-	min-width: 1000px;
+overflow: visible;
 }
 
-#notice {
-  clear: both;
-}
+	.content {
+		color: $font-dark;
+		margin-top: 10px;
+		overflow: hidden;
+	}
 
-.data {
-	min-width: 500px;
-}
+		.container {
+		margin: auto;
+		width: 80%;
+		text-align: center;
+		position: relative;
+		}
 
-.content {
-	position: relative;
-	top:10px;
-	overflow:hidden;
-	min-width: 800px;
-	color: $font-dark;
-}
+			.title {
+			background-color: $title-bg;
+			border-top: 2px solid $title-border;
+			border-bottom: 2px solid $title-border;
+			font-size: 22px;
+			font-weight: bold;
+			color: $title-fcolor;
+			padding: 0px;
+			padding-left: 10px;
+			margin: 0px;
+			line-height: 0%;
+			text-align: left;
+			white-space: nowrap;
+			}
 
-.container {
-	margin: auto;
-	width: 80%;
-	text-align: center;
-}
+			.inner_content {
+				display:block;
+				margin: 10px auto;
+			}
 
-.container * {
-	max-width: 100%;
-}
+				#notice {
+				  clear: both;
+				}
 
-.title {
-	background-color: $title-bg;
-	border-top: 2px solid $title-border;
-	border-bottom: 2px solid $title-border;
-	font-size: 22px;
-	font-weight: bold;
-	color: $title-fcolor;
-	padding: 0px;
-	padding-left: 10px;
-	margin: 0px;
-	line-height: 0%;
-	text-align: left;
-}
+				.data {
+					clear: both;
+					max-width: 100%;
+					overflow: auto;
+				}
 
-.footer {
-	background-color: $title-bg;
-	border-top: 2px solid $title-border;
-	border-bottom: 2px solid $title-border;
-	padding: 0px;
-	margin: 10px 0px 0px 0px;
-	min-height: 40px;
-	display: inline-block;
-	width: 100%;
-}
-
-.inner_content {
-	display:inline-block;
-	margin: 10px auto;
-}
+			.footer {
+				background-color: $title-bg;
+				border-top: 2px solid $title-border;
+				border-bottom: 2px solid $title-border;
+				padding: 0px;
+				margin: 10px 0px 0px 0px;
+				min-height: 40px;
+				display: inline-block;
+				width: 100%;
+			}
 
 .right {
 	float:right;

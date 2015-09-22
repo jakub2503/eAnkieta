@@ -2,13 +2,14 @@
   Statystyki
 <% end %>
 <% content_for :selectors do %>
-  <div class="selector">
+  <div class="selector left">
     <%= form_tag statistics_surveys_path, :id => 'lecture_selector' do %>
       <div class="styled_select">
         <%= select_tag :lecture_id, options_for_select(flash[:lectures_for_selector],:selected => params[:id]),onchange: "$('#lecture_selector').submit();"  %>
       </div>
 <% end %>
   </div>
+  <span id="width_tmp"></span>
 <% end %>
 
 <p id="notice"><%= notice %></p>

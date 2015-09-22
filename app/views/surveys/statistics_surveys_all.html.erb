@@ -4,17 +4,18 @@ Statystyki
 
 <% content_for :selectors do %>
 	<%= form_tag statistics_surveys_all_path, :id => 'lecture_selector' do %>
-	 <div class="selector">
+	 <div class="selector left">
 		 <div class="styled_select">
 	 		<%= select_tag :lecture_id, options_for_select(flash[:lectures_for_selector],:selected => params[:lecture_id_p]),onchange: "$('#lecture_selector').submit();"  %>
 	 	 </div>
 	 </div>
-	 <div class="selector2">
+	 <div class="selector2 right">
 		 <div class="styled_select">
 	 		<%= select_tag :survey_id, options_for_select(flash[:surveys_for_selector],:selected => 0),onchange: "$('#lecture_selector').submit();"  %>
 	 	 </div>
 	 </div>
 	<% end %>
+	<span id="width_tmp"></span>
 <% end %>
 
 <p id="notice"><%= notice %></p>

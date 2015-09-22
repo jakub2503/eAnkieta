@@ -10,12 +10,13 @@ table {
 table td {
 	padding:5px;
 	border: solid 2px $title-border;
+    max-width: 200px;
+    word-wrap:break-word;
 }
 
 table td.link {
 	padding:5px;
 	border: none;
-
 }
 
 table a {

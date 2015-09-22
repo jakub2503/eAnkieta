@@ -3,13 +3,14 @@
 <% end %>
 
 <% content_for :selectors do %>
-  <div class="selector">
+  <div class="selector left">
     <%= form_tag specific_surveys_path, :id => 'lecture_selector' do %>
       <div class="styled_select">
         <%= select_tag :lecture_id, options_for_select(flash[:lectures_for_selector_s],:selected => params[:id]),onchange: "$('#lecture_selector').submit();"  %>
       </div>
     <% end %>
   </div>
+  <span id="width_tmp"></span>
 <% end %>
 
 

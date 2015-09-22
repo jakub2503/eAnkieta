@@ -1,10 +1,9 @@
 /* SELECT */
 
 .selector {
-	height: 34px;
+	height: 35px;
 	margin-right:5px;
 	max-width: 60%;
-	float:left;
 }
 
 .selector * {
@@ -13,10 +12,9 @@
 
 
 .selector2 {
-	height: 34px;
+	height: 35px;
 	margin-left:5px;
 	max-width: 40%;
-	float:right;
 }
 
 .selector2 * {
@@ -24,8 +22,7 @@
 }
 
 .styled_select {
-    display:inline-block;
-    height:34px;
+  height:35px;
 	border-radius	: 0px;
 	border: solid 2px $title-border;
 	overflow: hidden;
@@ -38,13 +35,13 @@
    	appearance: none;
    	border-radius: 0;
     border:0;
-    height: 34px;
+    height: 33px;
 	cursor			: pointer;
 	background		: transparent;
 	font-size		: 16px;
 	font-weight		: bold;
 	color: $font-dark;
-	padding-right: 34px;
+	padding-right: 33px;
 }
 
 /* Styling using span element class arrow - image */
@@ -94,3 +91,10 @@
     pointer-events:none;
 }
 */
+
+
+#width_tmp{
+  display: none;
+  font-size   : 16px;
+  font-weight   : bold;
+}
