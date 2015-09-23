@@ -14,49 +14,50 @@
 <% end %>
 
 
-
-
 <p id="notice"><%= notice %></p>
 
-<table>
-  <thead>  
-    <tr>
-      <th rowspan="2"></th>
-      <th rowspan="2">Data zajęć</th>
-      <th colspan="2">Ważność tokenu</th>
-      <th rowspan="2">Token</th>
-      <th colspan="2"></th>
-      <tr>
-        <th>Od</th>
-        <th>Do</th>
-      </tr> 
-    </tr>
+<% if @surveys.first != nil %>
 
-  </thead>
 
-  <tbody>
-    <% @surveys.each do |survey| %>
+  <table>
+    <thead>  
       <tr>
-        <td class="link"><input type="checkbox" /></td>
-        <td><%= survey.start_date.strftime("%d-%m-%Y") %></td>
-        <td><%= survey.start_date.strftime("%H:%M") %></td>
-        <td><%= survey.end_date.strftime("%H:%M") %></td>
-        <td><%= survey.token %></td>
-        <td class="link"><%= 
-            if survey.children? == false
-              link_to 'Edytuj', edit_survey_path(survey), { :class=>"edit" }
-            end 
-        %></td>
-        <td class="link"><%= 
-            if survey.children? == false
-              link_to 'Usuń', survey, method: :delete, data: { confirm: 'Na pewno usunąć?' }, class: "delete"
-            end %>
-        </td>
+        <th rowspan="2"></th>
+        <th rowspan="2">Data zajęć</th>
+        <th colspan="2">Ważność tokenu</th>
+        <th rowspan="2">Token</th>
+        <th colspan="2"></th>
+        <tr>
+          <th>Od</th>
+          <th>Do</th>
+        </tr> 
       </tr>
-    <% end %>
-  </tbody>
-</table>
 
+    </thead>
+
+    <tbody>
+      <% @surveys.each do |survey| %>
+        <tr>
+          <td class="link"><input type="checkbox" /></td>
+          <td><%= survey.start_date.strftime("%d-%m-%Y") %></td>
+          <td><%= survey.start_date.strftime("%H:%M") %></td>
+          <td><%= survey.end_date.strftime("%H:%M") %></td>
+          <td><%= survey.token %></td>
+          <td class="link"><%= 
+              if survey.children? == false
+                link_to 'Edytuj', edit_survey_path(survey), { :class=>"edit" }
+              end 
+          %></td>
+          <td class="link"><%= 
+              if survey.children? == false
+                link_to 'Usuń', survey, method: :delete, data: { confirm: 'Na pewno usunąć?' }, class: "delete"
+              end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 <% content_for :links do %>
   <%= link_to 'Generuj nowe', new_survey_path, { :class=>"button right" } %>
 <% end %>

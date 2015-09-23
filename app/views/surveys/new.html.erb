@@ -1,5 +1,11 @@
-<h1>New Survey</h1>
+<% content_for :title do %>
+  Nowa ankieta
+<% end %>
+
 
 <%= render 'form' %>
 
-<%= link_to 'Back', specific_surveys_path(:id => flash[:lecture_id_flash]) %>
+<% content_for :links do %>
+	<label for="sumbit_form" class="button right">Generuj</label>
+  <%= link_to 'Powrót', specific_surveys_path(:id => flash[:lecture_id_flash]), { :class=>"button right" } %>
+<% end %>

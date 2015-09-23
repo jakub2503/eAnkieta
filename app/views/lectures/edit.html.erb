@@ -1,4 +1,7 @@
-<h1>Edycja przedmiotu</h1>
+<% content_for :title do %>
+  Edycja przedmiotu
+<% end %>
+
 <%= form_for :lecture, url: lecture_path(@lecture), method: :patch do |f| %>
 
 <% if @lecture.errors.any? %>
@@ -13,25 +16,39 @@
     </div>
 <% end %>
 
-<p>
-	<%= f.label :"Nazwa przedmiotu" %><br>
-	<%= f.text_field :name %>
-<p>
+<div class=form>
 
-<p>
-	<%= f.label :"Rok" %><br>
-	<%= f.number_field :year, value:Time.now.year %>
-</p>
+<div class="field">
+  <%= f.label :"Nazwa przedmiotu: " %>
+  <%= f.text_field :name %>
+</div>
 
-<p>
-	<%= f.label:"Semestr" %><br>
-	<%= f.select :semester, [['Zimowy','Z'],['Letni','L']] %>
-</p>
+<div class="field number">
+  <%= f.label :"Rok: " %>
+  <div><%= f.text_field :year, value:Time.now.year  %>
+  <span class="plus"></span><span class="minus"></span></div>
+</div>
+<div></div>
+<div class="field">
+  <%= f.label:"Semestr: " %>
+  <div>
+  <div class="selector">
+  <div class="styled_select">
+  <%= f.select :semester, [['Zimowy','Z'],['Letni','L']] %>
+  </div>
+  </div>
+  </div>
+  <span id="width_tmp"></span>
+</div>
+  <% content_for :links do %>
+    <div class="actions">
+      <%= f.submit 'Dodaj', :class => 'button right' %>
+    </div>
+  <% end %>
 
-<p>
-	<%= f.submit :"Zapisz zmiany"%><br>
-</p>
- 
+</div>
 <% end %>
 
-<%= link_to 'Powrót', controller: 'lectures' %><br>
+<% content_for :links do %>
+  <%= link_to 'Powrót', lectures_path, { :class=>"button right" } %>
+<% end %>

@@ -1,5 +1,6 @@
-<h1>Tworzenie nowego przedmiotu</h1>
-
+<% content_for :title do %>
+  Nowy przedmiot
+<% end %>
 
 <%= form_for :lecture, url: lectures_path do |f| %>
 
@@ -15,24 +16,38 @@
     </div>
 <% end %>
 
-<p>
-	<%= f.label :"Nazwa przedmiotu" %><br>
+<div class=form>
+
+<div class="field">
+	<%= f.label :"Nazwa przedmiotu: " %>
 	<%= f.text_field :name %>
-</p>
+</div>
 
-<p>
-	<%= f.label :"Rok" %><br>
-	<%= f.number_field :year, value:Time.now.year %>
-</p>
-
-<p>
-	<%= f.label:"Semestr" %><br>
+<div class="field number">
+	<%= f.label :"Rok: " %>
+	<div><%= f.text_field :year, value:Time.now.year  %>
+  <span class="plus"></span><span class="minus"></span></div>
+</div>
+<div class="field">
+	<%= f.label:"Semestr: " %>
+  <div>
+  <div class="selector">
+  <div class="styled_select">
 	<%= f.select :semester, [['Zimowy','Z'],['Letni','L']] %>
-</p>
-
-<p>
-	<%= f.submit :"Dodaj przedmiot"%><br>
-</p>
+  </div>
+  </div>
+  </div>
+  <span id="width_tmp"></span>
+</div>
+    <div class="actions hidden">
+      <%= f.submit 'Dodaj', :id => 'sumbit_form', :class => 'hidden' %>
+    </div>
+</div>
+  
 <% end %>
 
-<%= link_to 'Powrót', controller: 'lectures' %><br>
+
+<% content_for :links do %>
+  <label for="sumbit_form" class="button right">Dodaj</label>
+  <%= link_to 'Powrót', lectures_path, { :class=>"button right" } %>
+<% end %>
