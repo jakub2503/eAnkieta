@@ -1,16 +1,16 @@
-/*body {
+body {
   background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
-}*/
+}
 
-/*p, ol, ul, td {
+p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
-}*/
+}
 
 pre {
   background-color: #eee;
@@ -18,7 +18,7 @@ pre {
   font-size: 11px;
 }
 
-/*a {
+a {
   color: #000;
 
   &:visited {
@@ -29,13 +29,13 @@ pre {
     color: #fff;
     background-color: #000;
   }
-}*/
+}
 
-/*div {
+div {
   &.field, &.actions {
     margin-bottom: 10px;
   }
-}*/
+}
 
 #notice {
   color: green;
@@ -52,7 +52,7 @@ pre {
   border: 2px solid red;
   padding: 7px;
   padding-bottom: 0;
-  margin: 10px auto;
+  margin-bottom: 20px;
   background-color: #f0f0f0;
 
   h2 {
@@ -69,6 +69,5 @@ pre {
   ul li {
     font-size: 12px;
     list-style: square;
-    text-align: left;
   }
 }

@@ -1,5 +1,3 @@
-
-
 <%= form_for(@survey) do |f| %>
   <% if @survey.errors.any? %>
     <div id="error_explanation">
@@ -13,78 +11,29 @@
     </div>
   <% end %>
   
-  <div class=form>
   <div class="field">
-    <%= f.label :"Przedmiot: " %>
-
-    <div>
-    <div class="selector_fixed">
-    <div class="styled_select">
+    <%= f.label :Wykład %><br />
     <%= f.select :lecture_id, options_for_select(flash[:lectures_for_selector_s], :selected => flash[:lecture_id_flash]) %>
-    </div>
-    </div>
-    </div>
   </div>
 
   <div class="field">
-	<%= f.label :"Data zajęć: " %>
-  <div>
-    <div class="start_date">
-    <%= f.date_select :start_date %>
-    </div>
-    <div class="end_date">
-    <%= f.date_select :end_date %>
-    </div>
-  </div>
-  </div>
-  
-    <div class="field">
-  <%= f.label :"Ważność tokenu: " %>
-   <div> 
-    <div class="time_selectors_border">
-    <div class="time_field">
-      <span>Od:</span>
-      <div class="selector_fixed">
-      <div class="styled_select">
-      <%= select_tag "survey[start_date(4i)]", options_for_select( [["00",0],["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12],["13",13],["14",14],["15",15],["16",16],["17",17],["18",18],["19",19],["20",20],["21",21],["22",22],["23",23]], :selected => 12 ) %>
-      </div>
-      </div>
-      <span>:</span>
-      <div class="selector_fixed">
-      <div class="styled_select">
-      <%= select_tag "survey[start_date(5i)]", options_for_select(  [["00",00],["05",05],["10",10],["15",15],["20",20],["25",25],["30",30],["35",35],["40",40],["45",45],["50",50],["55",55]] ) %>
-      </div>
-      </div>
-    </div>
-    <div style="display: block;"></div>
-    <div class="time_field">
-      <span>Do:</span>
-      <div class="selector_fixed">
-      <div class="styled_select">
-      <%= select_tag "survey[end_date(4i)]", options_for_select( [["00",0],["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12],["13",13],["14",14],["15",15],["16",16],["17",17],["18",18],["19",19],["20",20],["21",21],["22",22],["23",23]], :selected => 12 ) %>
-      </div>
-      </div>
-      <span>:</span>
-      <div class="selector_fixed">
-      <div class="styled_select">
-      <%= select_tag "survey[end_date(5i)]", options_for_select(  [["00",00],["05",05],["10",10],["15",15],["20",20],["25",25],["30",30],["35",35],["40",40],["45",45],["50",50],["55",55]] ) %>
-      </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  </div>
-  
-
-  <div class="field number">
-    <%= f.label :"Ankiet: " %>
-    <div class="above_zero"><%= f.text_field :number_of_surveys, value:1  %>
-    <span class="plus"></span><span class="minus"></span></div>
+	<%= f.label :data_zajęć %><br>
+    <%= f.date_select :start_date %><br>
+    <%= f.time_select :start_date, :ignore_date => true %>
   </div>
   
   <div class="field">
-  <%= f.label :"Co: " %>
-  <div class="radio_buttons">
+	<%= f.label :HIDDEN_end_date %><br>
+    <%= f.date_select :end_date %><br>
+    <%= f.time_select :end_date, :ignore_date => true %>
+  </div>
+  
+  <div class="field">
+  <%= f.label :liczba_ankiet %><br>
+    <%= f.number_field :number_of_surveys, "size" => 1, "min" => 1, "max" => 20, "value" => 1 %>
+  </div>
+  
+  <div class="field">
   <%= f.radio_button :interval, '1', :checked => true %>
   <%= f.label :interval, '1 tydzień', :value => '1' %>
 	<%= f.radio_button :interval, '2' %>
@@ -92,11 +41,9 @@
   <%= f.radio_button :interval, '3' %>
 	<%= f.label :interval, '3 tygodnie', :value => '3' %>
   </div>
-  </div>
   
-  <div class="actions hidden">
-      <%= f.submit 'Dodaj', :id => 'sumbit_form', :class => 'hidden' %>
-  </div>
-</div>
-<% end %>
 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
