@@ -2,7 +2,6 @@
 
 .selector {
 	height: 35px;
-	margin-right:5px;
 	max-width: 60%;
 }
 
@@ -13,12 +12,15 @@
 
 .selector2 {
 	height: 35px;
-	margin-left:5px;
-	max-width: 40%;
+	max-width: 35%;
 }
 
 .selector2 * {
 	max-width: 100%;
+}
+
+.selector_fixed {
+  max-width: 300px;
 }
 
 .styled_select {
@@ -94,6 +96,7 @@
 
 
 #width_tmp{
+  white-space: nowrap;
   display: none;
   font-size   : 16px;
   font-weight   : bold;
