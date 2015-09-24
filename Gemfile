@@ -49,3 +49,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "simple-navigation"
 #CoffeeScript because of errors
 gem 'coffee-script-source', '1.8.0'
+#jquery-turbolings so jquery can work properly with turbolinks
+gem 'jquery-turbolinks'

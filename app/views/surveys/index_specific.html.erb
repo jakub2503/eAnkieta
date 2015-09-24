@@ -36,9 +36,9 @@
     </thead>
 
     <tbody>
-      <% @surveys.each do |survey| %>
+      <% @surveys.each_with_index do |survey,index| %>
         <tr>
-          <td class="link"><input type="checkbox" /></td>
+          <td class="link"><input type="checkbox" id=<%="checkbox_#{index.to_s}"%> /><label for=<%="checkbox_#{index.to_s}"%>></span></td>
           <td><%= survey.start_date.strftime("%d-%m-%Y") %></td>
           <td><%= survey.start_date.strftime("%H:%M") %></td>
           <td><%= survey.end_date.strftime("%H:%M") %></td>

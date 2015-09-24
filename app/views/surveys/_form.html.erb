@@ -18,12 +18,13 @@
     <%= f.label :"Przedmiot: " %>
 
     <div>
-    <div class="selector_fixed">
+    <div class="selector_fixed2">
     <div class="styled_select">
     <%= f.select :lecture_id, options_for_select(flash[:lectures_for_selector_s], :selected => flash[:lecture_id_flash]) %>
     </div>
     </div>
     </div>
+    <span id="width_tmp"></span>
   </div>
 
   <div class="field">
@@ -84,14 +85,23 @@
   
   <div class="field">
   <%= f.label :"Co: " %>
-  <div class="radio_buttons">
-  <%= f.radio_button :interval, '1', :checked => true %>
-  <%= f.label :interval, '1 tydzień', :value => '1' %>
-	<%= f.radio_button :interval, '2' %>
-	<%= f.label :interval, '2 tygodnie', :value => '2' %>
-  <%= f.radio_button :interval, '3' %>
-	<%= f.label :interval, '3 tygodnie', :value => '3' %>
-  </div>
+    <div class="radio_buttons">
+    <div class="radio_holder">
+      <%= f.radio_button :interval, '1', :checked => true %>
+      <label for="survey_interval_1"></label>
+      <span>1 tydzień</span>
+    </div>
+    <div class="radio_holder">
+    	<%= f.radio_button :interval, '2' %>
+    	<label for="survey_interval_2"></label>
+      <span>2 tygodnie</span>
+    </div>
+    <div class="radio_holder">
+      <%= f.radio_button :interval, '3' %>
+    	<label for="survey_interval_3"></label>
+      <span>3 tygodnie</span>
+    </div>
+    </div>
   </div>
   
   <div class="actions hidden">

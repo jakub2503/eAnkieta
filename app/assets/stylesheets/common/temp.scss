@@ -19,7 +19,7 @@
 
 .field>* {
 	display: table-cell;
-	text-align: left;
+	text-align: center;
     vertical-align: middle;
     overflow: hidden;
 }
@@ -31,6 +31,7 @@
 
 .time_field {
 	display: inline-block;
+  white-space: nowrap;
 }
 
 .time_field>* {
@@ -40,6 +41,11 @@
 .time_field span {
 	position: relative;
 	top: -10px;
+}
+
+.radio_holder {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .field label {
@@ -91,3 +97,90 @@
 .hidden {
 	display: none;
 }
+
+
+
+
+
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]+label {
+  display: inline;
+}
+
+input[type="checkbox"]+label {
+  background-color: $title-bg;
+  border: 1px solid $title-border;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+  padding: 9px;
+  display: inline-block;
+  position: relative;
+}
+
+input[type="checkbox"] + label:active, input[type="checkbox"]:checked + label:active {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1), inset 0px 1px 3px rgba(0,0,0,0.25);
+}
+
+input[type="checkbox"]:checked + label {
+  background-color: #e9ecee;
+  border: 1px inset $title-border;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+}
+
+input[type="checkbox"]:checked + label:after {
+  content: '\2714';
+  font-size: 14px;
+  position: absolute;
+  top: 0px;
+  left: 3px;
+  color: $font-dark;
+}
+
+
+
+
+
+/* RADIO */
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + label {
+  
+  background-color: $title-bg;
+  border: 1px solid $title-border;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+  padding: 9px;
+  border-radius: 50px;
+  display: inline-block;
+  position: relative;
+}
+
+input[type="radio"]:checked + label:after {
+  content: ' ';
+  width: 12px;
+  height: 12px;
+  border-radius: 50px;
+  position: absolute;
+  top: 3px;
+  background: #99a1a7;
+  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);
+  text-shadow: 0px;
+  left: 3px;
+  font-size: 32px;
+}
+
+input[type="radio"]:checked + label {
+  background-color: $title-bg;
+  border: 1px inset $title-border;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1), inset 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+input[type="radio"] + label:active, input[type="radio"]:checked + label:active {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2), inset 0px 1px 3px rgba(0,0,0,0.3);
+}
+

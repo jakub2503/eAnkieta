@@ -142,6 +142,8 @@ class SurveysController < ApplicationController
       if @survey.save
         a=a+1
         @token.destroy
+      else
+        break;
       end
 
     end
@@ -149,6 +151,8 @@ class SurveysController < ApplicationController
     respond_to do |format|
       if a==num_sur and a!=0
         format.html { redirect_to specific_surveys_path(:id => @survey.lecture_id), notice: 'Poprawnie utworzono ankiety.' }
+      elsif a>0
+        format.html { redirect_to specific_surveys_path(:id => @survey.lecture_id), notice: "Poprawnie utworzono: #{a}  ankiet." }
       else
         format.html { render :new }
         format.json { render json: @survey.errors, status: :unprocessable_entity }

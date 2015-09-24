@@ -1,7 +1,12 @@
 /* GENERAL */
+/* Hard limits only on max-width: so site doesnt go whoop too much */
 
-body {
-overflow: visible;
+
+	
+.limiter {
+	max-width: 1100px;
+	margin:auto;
+	overflow: visible;
 }
 
 	.content {
@@ -15,6 +20,7 @@ overflow: visible;
 		width: 80%;
 		text-align: center;
 		position: relative;
+		max-width: 800px;
 		}
 
 			.title {

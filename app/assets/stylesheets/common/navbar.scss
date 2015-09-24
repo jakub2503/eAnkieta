@@ -155,15 +155,16 @@
 
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
 
   #nav {
-    margin: 0 0 10px 0;
+    margin: 0 0 40px 0;
     color: $nav-fcolor;
     width: 100%;
     text-align: center;
-
+    padding-bottom: 2px;
     float:none;
+    background-color: $nav-lightblue;
   }
 
 
@@ -174,7 +175,7 @@
       padding: 0;
       line-height: 1;
       zoom: 1;
-      background-color: $nav-lightblue;
+      
   }
 
 

@@ -23,6 +23,11 @@ table a {
 	text-decoration: none;
 	color: $title-fcolor;
 	font-weight: bold;
+	-webkit-transition: color .5s;
+    -moz-transition: color .5s;
+    -ms-transition: color .5s;
+    -o-transition: color .5s;
+    transition: color .5s;
 }
 
 table th,
@@ -38,6 +43,7 @@ table td.link .edit:hover,
 table td.link .delete:hover,
 table td.link .goto:hover {
   color: $font-dark;
+
 }
 
 table td.link .delete {
