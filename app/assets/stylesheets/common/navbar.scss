@@ -42,109 +42,238 @@
 }
 */
 
-#nav {
-  margin:0px 10px;
-  color: $nav-fcolor;
-  width: 170px;
-  float: left;
-}
 
-#nav ul {
-  list-style: none;
-  margin: 0;
-    padding: 0;
-    line-height: 1;
-    zoom: 1;
-    background-color: $nav-lightblue;
+  #nav {
+    margin:0px 10px;
+    color: $nav-fcolor;
+    width: 170px;
+    float: left;
+  }
 
-}
-
-
-#nav a {
-  color: $nav-fcolor;
-  text-decoration: none;
-  display: block;
-  padding: 15px 25px 15px 10px;
-  font-weight: 700;
-  font-size: 14px;
-  position: relative;
-  -webkit-transition: color .5s;
-  -moz-transition: color .5s;
-  -ms-transition: color .5s;
-  -o-transition: color .5s;
-  transition: color .5s;
-}
+  #nav ul {
+    list-style: none;
+    margin: 0;
+      padding: 0;
+      line-height: 1;
+      zoom: 1;
+      background-color: $nav-lightblue;
+  }
 
 
-#nav ul li a:hover {
-  color: $nav-hline1;
-}
-
-#nav ul li a:hover:before {
-  height: 100%;
-}
-
-#nav ul li a:before {
-  content: "";
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 0px;
-  width: 3px;
-  background: $normal-gray;
-  -webkit-transition: height .5s;
-  -moz-transition: height .5s;
-  -ms-transition: height .5s;
-  -o-transition: height .5s;
-  transition: height .5s;
-}
-
-#nav ul li.last > a:after,
-#nav ul li:last-child > a:after {
-  display: none;
-}
-#nav ul li.active a {
-  color: $normal-gray;
-}
-#nav ul li.active a:before {
-  width: 100%;
-}
+  #nav a {
+    color: $nav-fcolor;
+    text-decoration: none;
+    display: block;
+    padding: 15px 25px 15px 10px;
+    font-weight: 700;
+    font-size: 14px;
+    position: relative;
+    -webkit-transition: color .5s;
+    -moz-transition: color .5s;
+    -ms-transition: color .5s;
+    -o-transition: color .5s;
+    transition: color .5s;
+  }
 
 
-#nav li#navigation_title {
-	background-color: $nav-darkblue;
-	color: $nav-title;
-	font-size: 22px;
-	padding: 10px 0px 20px 10px;
-	font-weight: bold;
-	line-height: 130%;
-	position:relative;
-  display: block;
-}
+  #nav ul li a:hover {
+    color: $nav-hline1;
+  }
+
+  #nav ul li a:hover:before {
+    height: 100%;
+  }
+
+  #nav ul li a:before {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 0px;
+    width: 3px;
+    background: $normal-gray;
+    -webkit-transition: height .5s;
+    -moz-transition: height .5s;
+    -ms-transition: height .5s;
+    -o-transition: height .5s;
+    transition: height .5s;
+  }
+
+  #nav ul li.last > a:after,
+  #nav ul li:last-child > a:after {
+    display: none;
+  }
+  #nav ul li.active a {
+    color: $normal-gray;
+  }
+  #nav ul li.active a:before {
+    width: 100%;
+  }
 
 
-/* 2 horizontal lines as after and before */
-#nav li#navigation_title:after {
-	content: "";
-  	display: block;
-  	position: absolute;
-  	left: 5%;
-  	bottom: 5px;
-  	height: 4px;
-  	width: 90%;
- 	background: $nav-hline1;
-  	opacity: 1;
-}
+  #nav li#navigation_title {
+    background-color: $nav-darkblue;
+    color: $nav-title;
+    font-size: 22px;
+    padding: 10px 0px 20px 10px;
+    font-weight: bold;
+    line-height: 130%;
+    position:relative;
+    display: block;
+  }
 
-#nav li#navigation_title:before {
-	content: "";
-  	display: block;
-  	position: absolute;
-  	left: 10%;
-  	bottom: 4px;
-  	height: 1px;
-  	width: 80%;
- 	background: $nav-title;
-  	opacity: 1;
+
+  /* 2 horizontal lines as after and before */
+  #nav li#navigation_title:after {
+    content: "";
+      display: block;
+      position: absolute;
+      left: 5%;
+      bottom: 5px;
+      height: 4px;
+      width: 90%;
+    background: $nav-hline1;
+      opacity: 1;
+  }
+
+  #nav li#navigation_title:before {
+    content: "";
+      display: block;
+      position: absolute;
+      left: 10%;
+      bottom: 4px;
+      height: 1px;
+      width: 80%;
+    background: $nav-title;
+      opacity: 1;
+  }
+
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+
+  #nav {
+    margin: 0 0 10px 0;
+    color: $nav-fcolor;
+    width: 100%;
+    text-align: center;
+
+    float:none;
+  }
+
+
+
+  #nav ul {
+    list-style: none;
+      margin: 0;
+      padding: 0;
+      line-height: 1;
+      zoom: 1;
+      background-color: $nav-lightblue;
+  }
+
+
+
+
+  #nav li {
+    display:inline;
+  }
+
+  #nav a {
+    color: $nav-fcolor;
+    text-decoration: none;
+    display: inline-block;
+    width:146px;
+    padding: 5px 11px;
+    font-weight: 700;
+    font-size: 16px;
+    position: relative;
+    -webkit-transition: color .5s;
+    -moz-transition: color .5s;
+    -ms-transition: color .5s;
+    -o-transition: color .5s;
+    transition: color .5s;
+  }
+
+
+
+  #nav ul li a:hover {
+    color: $nav-hline1;
+  }
+
+  #nav ul li a:hover:before {
+    width: 100%;
+    height: 2px;
+  }
+
+  #nav ul li a:before {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    height: 2px;
+    width: 0px;
+    background: $normal-gray;
+    -webkit-transition: width .5s;
+    -moz-transition: width .5s;
+    -ms-transition: width .5s;
+    -o-transition: width .5s;
+    transition: width .5s;
+  }
+
+  #nav ul li.last > a:after,
+  #nav ul li:last-child > a:after {
+    display: none;
+  }
+  #nav ul li.active a {
+    color: $normal-gray;
+  }
+  #nav ul li.active a:before {
+    width: 100%;
+  }
+
+
+  #nav li#navigation_title {
+    background-color: $nav-darkblue;
+    color: $nav-title;
+    font-size: 22px;
+    padding: 10px 0px 20px 10px;
+    font-weight: bold;
+    line-height: 130%;
+    position:relative;
+    display: none;
+  }
+
+
+  /* 2 horizontal lines as after and before */
+  /*#nav li#navigation_title:after {
+    content: "";
+      display: block;
+      position: absolute;
+      left: 5%;
+      bottom: 5px;
+      height: 4px;
+      width: 90%;
+    background: $nav-hline1;
+      opacity: 1;
+  }
+
+  #nav li#navigation_title:before {
+    content: "";
+      display: block;
+      position: absolute;
+      left: 10%;
+      bottom: 4px;
+      height: 1px;
+      width: 80%;
+    background: $nav-title;
+      opacity: 1;
+  }*/
+
 }

@@ -57,7 +57,6 @@ SimpleNavigation::Configuration.run do |navigation|
   primary.item :navigation_statistics, 'Statystyki', statistics_path
   primary.item :navigation_help, 'Pomoc' , root_path
 
-  primary.item :TEMP, '=================='
   primary.item :navigation_scores, 'GLOSUJ', scores_path
   
   end
