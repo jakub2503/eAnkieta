@@ -7,6 +7,7 @@
 	max-width: 1100px;
 	margin:auto;
 	overflow: visible;
+
 }
 
 	.content {
@@ -77,3 +78,41 @@
 .clear_both {
 	clear: both;
 }
+
+
+/* smaller screens */
+
+@media screen and (max-width: 870px) {
+
+  .container {
+    /*margin-top: 90px;*/
+    width: 100%;
+    max-width: none;
+  }
+  .title {
+    text-align: center;
+  }
+  .button.right {
+    float: none;
+    position: relative;
+    top:8px;
+  }
+
+  .inner_content {
+    padding: 15px;
+  }
+
+	/*@media screen and (max-width: 454px) {
+	  .container {
+	    margin-top: 130px;
+	  }
+
+		@media screen and (max-width: 308px) {
+			.container {
+			    margin-top: 200px;
+			}
+		}
+	}*/
+
+}
+

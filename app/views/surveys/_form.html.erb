@@ -1,6 +1,6 @@
 
 
-<%= form_for(@survey) do |f| %>
+<%= form_for @survey, :url => post_surveys_path do |f| %>
   <% if @survey.errors.any? %>
     <div id="error_explanation">
      <h2>Wystąpiła następująca liczba błędów: <%=@survey.errors.count%></h2>
@@ -80,7 +80,7 @@
   <div class="field number">
     <%= f.label :"Ankiet: " %>
     <div class="above_zero"><%= f.text_field :number_of_surveys, value:1  %>
-    <span class="plus"></span><span class="minus"></span></div>
+    <span class="minus"></span><span class="plus"></span></div>
   </div>
   
   <div class="field">
@@ -88,17 +88,17 @@
     <div class="radio_buttons">
     <div class="radio_holder">
       <%= f.radio_button :interval, '1', :checked => true %>
-      <label for="survey_interval_1"></label>
+      <label for="survey_interval_1"></label><br>
       <span>1 tydzień</span>
     </div>
     <div class="radio_holder">
     	<%= f.radio_button :interval, '2' %>
-    	<label for="survey_interval_2"></label>
+    	<label for="survey_interval_2"></label><br>
       <span>2 tygodnie</span>
     </div>
     <div class="radio_holder">
       <%= f.radio_button :interval, '3' %>
-    	<label for="survey_interval_3"></label>
+    	<label for="survey_interval_3"></label><br>
       <span>3 tygodnie</span>
     </div>
     </div>

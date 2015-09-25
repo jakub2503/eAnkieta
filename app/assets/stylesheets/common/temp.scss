@@ -46,6 +46,7 @@
 .radio_holder {
   display: inline-block;
   white-space: nowrap;
+  margin:0px 5px;
 }
 
 .field label {
@@ -72,7 +73,7 @@
 }
 
 .field.number .plus {
-	margin-right: 1px;
+	margin-left: 1px;
   background : asset-url("plus.jpg") no-repeat right -1px;
   height:20px;
   width: 22px;
@@ -81,7 +82,7 @@
 }
 
 .field.number .minus {
-	margin-left: 1px;
+	margin-right: 1px;
   background : asset-url("minus.jpg") no-repeat right -1px;
   height:20px;
   width: 22px;

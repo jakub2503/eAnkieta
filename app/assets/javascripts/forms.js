@@ -19,7 +19,16 @@ function selectorSizes() {
 function numberActions() {
 	$('.plus').click(function(){
 	var temp = parseInt($(this).siblings(":text").val());
-	$(this).siblings(":text").val((temp+1).toString());
+	if ( $(this).parent().hasClass("above_zero") ){
+			if ( temp < 20 ){
+				$(this).siblings(":text").val((temp+1).toString());
+			}
+		}
+		else{
+			if ( (new Date).getFullYear()+10 > temp){
+				$(this).siblings(":text").val((temp+1).toString());
+			}
+		}
  	});
  	
  	$('.minus').click(function(){

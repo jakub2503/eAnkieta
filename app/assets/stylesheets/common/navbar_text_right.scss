@@ -64,7 +64,8 @@
     color: $nav-fcolor;
     text-decoration: none;
     display: block;
-    padding: 15px 25px 15px 10px;
+    padding: 15px 10px 15px 25px;
+    text-align: right;
     font-weight: 700;
     font-size: 14px;
     position: relative;
@@ -116,11 +117,12 @@
     background-color: $nav-darkblue;
     color: $nav-title;
     font-size: 22px;
-    padding: 10px 0px 20px 10px;
+    padding: 10px 10px 20px 0px;
     font-weight: bold;
     line-height: 130%;
     position:relative;
     display: block;
+    text-align: right;
   }
 
 
@@ -155,24 +157,18 @@
 
 
 
-@media screen and (max-width: 870px) {
-
-
-/*!! Currently: fixed position. Can change for normal - and delete margins in main_content.scss      !!*/
+@media screen and (max-width: 800px) {
 
   #nav {
     margin: 0 0 40px 0;
     color: $nav-fcolor;
     width: 100%;
-    text-align: center;
     padding-bottom: 2px;
     float:none;
     background-color: $nav-lightblue;
-    top:0;
-    left:0;
-    /*position:fixed;
-    z-index: 1;
-*/  }
+  }
+
+
 
   #nav ul {
     list-style: none;

@@ -5,7 +5,7 @@ class SurveysController < ApplicationController
   # GET /lectures/surveys/1
   # GET /lectures/surveys/1.json
   def index_specific
-
+      #show all surveys for select lecture: edit, delete, print...
       lectures_for_selector_s = Array.new
       lectures_temp = Lecture.all.order(updated_at: :desc)
       lectures_temp.each do |lecture|
@@ -29,6 +29,7 @@ class SurveysController < ApplicationController
   # GET /statistics/1
   # GET /statistics/1.json
   def statistics_surveys
+    #show statistics for all surveys for specific lecture
       lectures_for_selector = Array.new
       lectures_temp = Lecture.all.order(updated_at: :desc)
       lectures_temp.each do |lecture|
@@ -50,6 +51,8 @@ class SurveysController < ApplicationController
   # GET /statistics/1/1
   # GET /statistics/1.json/1.json
   def statistics_specific
+    #graphs for specific lecture/survey combo
+
     flash.keep
     lecture = Lecture.find(params[:lecture_id_p])
       
@@ -79,6 +82,7 @@ class SurveysController < ApplicationController
   # GET /statistics/1/0
   # GET /statistics/1.json/0.json
   def statistics_surveys_all
+    # Graphs for all surveys from select lecture
     flash.keep
     lecture = Lecture.find(params[:lecture_id_p])
       
@@ -107,6 +111,7 @@ class SurveysController < ApplicationController
   # GET /surveys/1
   # GET /surveys/1.json
   def show
+    #UNUSED
   end
 
   # GET /surveys/new
@@ -123,6 +128,7 @@ class SurveysController < ApplicationController
   # POST /surveys
   # POST /surveys.json
   def create
+    #create multiple surveys
     flash.keep
     num_sur = survey_params[:number_of_surveys].to_i
     a=0
