@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   resources :surveys
+
+  match 'surveys/new', :to => 'surveys#create', 
+                       :via => :post, 
+                       :as => :post_surveys
   
  get '/lectures/surveys/:id', to:'surveys#index_specific', as:'specific_surveys'
  post '/lectures/surveys/:id', to:'surveys#index_specific_post'
@@ -33,6 +37,8 @@ Rails.application.routes.draw do
   post '/statistics/:lecture_id_p/0', to:'surveys#statistics_specific_post'
   get '/statistics/:lecture_id_p/:survey_id_p', to:'surveys#statistics_specific', as:'statistics_specific'
   post '/statistics/:lecture_id_p/:survey_id_p', to:'surveys#statistics_specific_post'
+
+
 
    root 'welcome#index'
 
