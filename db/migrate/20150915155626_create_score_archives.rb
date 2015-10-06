@@ -2,8 +2,8 @@ class CreateScoreArchives < ActiveRecord::Migration
   def change
     create_table :score_archives do |t|
       t.integer  :lecture_id
-      t.decimal :general_score, precision: 4, scale: 3
-      t.decimal :tempo_score, precision: 4, scale: 3
+      t.decimal :general_score, precision: 3, scale: 2
+      t.decimal :tempo_score, precision: 3, scale: 2
       t.decimal :importance_score
       t.integer :number_of_votes
 
