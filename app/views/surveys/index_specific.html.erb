@@ -1,3 +1,4 @@
+
 <% content_for :title do %>
   Zarządzanie ankietami
 <% end %>
@@ -59,6 +60,18 @@
   </table>
 <% end %>
 <% content_for :links do %>
+
+  <%= form_for :lecture, :url => generate_pdf_path do |f| %>
+  <%= f.hidden_field :id, :value => params[:id] %>
+  <%= f.submit :"Drukuj" , { :class=>"button right" }%>
+
   <%= link_to 'Generuj nowe', new_survey_path, { :class=>"button right" } %>
+  
+  
+
+  
 <% end %>
+  
+<% end %>
+
 

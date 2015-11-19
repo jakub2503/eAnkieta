@@ -16,9 +16,15 @@ Rails.application.routes.draw do
   match 'surveys/new', :to => 'surveys#create', 
                        :via => :post, 
                        :as => :post_surveys
+					   
+    post '/pdf', to:'surveys#generate_pdf', as: 'generate_pdf' 
+	get '/pdf', to:'lectures#index', as:'generate_pdf_get'
+
+  get '/lectures/surveys/:id', to:'surveys#index_specific', as:'specific_surveys'
   
- get '/lectures/surveys/:id', to:'surveys#index_specific', as:'specific_surveys'
- post '/lectures/surveys/:id', to:'surveys#index_specific_post'
+  post '/lectures/surveys/:id', to:'surveys#index_specific_post'
+
+
 
 
 
@@ -37,6 +43,8 @@ Rails.application.routes.draw do
   post '/statistics/:lecture_id_p/0', to:'surveys#statistics_specific_post'
   get '/statistics/:lecture_id_p/:survey_id_p', to:'surveys#statistics_specific', as:'statistics_specific'
   post '/statistics/:lecture_id_p/:survey_id_p', to:'surveys#statistics_specific_post'
+  
+    
 
 
 

@@ -51,3 +51,4 @@ gem "simple-navigation"
 gem 'coffee-script-source', '1.8.0'
 #jquery-turbolings so jquery can work properly with turbolinks
 gem 'jquery-turbolinks'
+gem 'wicked_pdf'

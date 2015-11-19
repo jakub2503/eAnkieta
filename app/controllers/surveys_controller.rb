@@ -18,8 +18,77 @@ class SurveysController < ApplicationController
     lecture = Lecture.find(params[:id])
     @surveys = lecture.surveys.order(start_date: :desc)
     flash[:lecture_id_flash]= params[:id]
+	
+	#respond_to do |format|
+	#	format.html
+	#	format.pdf do
+	#		
+	#		pdf = PDF::Writer.new
+	#		pdf.text 'Hello world!'
+	#		send_data pdf.render, :filename => "1.pdf", :type => "application/pdf", :disposition => "inline"
+	#	end
+	#end
+
   end
 
+  def generate_pdf
+	html = ""
+	lecture = Lecture.find(params[:lecture][:id])
+	html = html + "<head>
+	<title>" + lecture.name + "</title>
+	<style>
+		table {
+			clear: both;
+			border-collapse: collapse;
+			text-align: center;
+		}
+
+		table th{
+			padding:5px;
+			padding-left:20px;
+			padding-right:20px;
+			border: outset 2px;
+			background-color: #D6DEE1;
+			color: #003366;
+		}
+
+		table td{
+			padding:5px;
+			padding-left:20px;
+			padding-right:20px;
+			border: outset 2px;
+		}
+	</style>
+	</head><p style='font-size: 32px'><strong>"+lecture.name+"</strong></p><br><table style='font-size: 20px'>    
+	<thead>  
+      <tr>      
+        <th rowspan='2'>Data zajęć</th>
+        <th colspan='2'>Ważność tokenu</th>
+        <th rowspan='2'>Token</th>       
+        <tr>
+          <th>Od</th>
+          <th>Do</th>
+        </tr> 
+      </tr>
+    </thead>"
+    surveys_temp = lecture.surveys.order(start_date: :desc)
+	surveys_temp.each do |survey|
+		
+		html = html + "<tr><td>" + survey.start_date.strftime("%d-%m-%Y")
+		html = html + "<td>" + survey.start_date.strftime("%H:%M") 
+		html = html + "<td>" + survey.end_date.strftime("%H:%M") 
+		html = html + "<td>" + survey.token + "</tr>"
+	
+	end
+	  html = html + "</table>"
+	  pdf = WickedPdf.new.pdf_from_string(html, :encoding => "UTF-8") 
+	send_data(pdf, 
+    :filename    => 'Lista Ankiet '+lecture.name+ '.pdf', 
+    :disposition => 'inline'
+	) 
+
+  end
+  
   # POST /lectures/surveys/1
   # POST /lectures/surveys/1.json
   def index_specific_post
@@ -112,6 +181,7 @@ class SurveysController < ApplicationController
   # GET /surveys/1.json
   def show
     #UNUSED
+
   end
 
   # GET /surveys/new
