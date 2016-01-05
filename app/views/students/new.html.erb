@@ -1,0 +1,40 @@
+<% content_for :title do %>
+  Rejestracja
+<% end %>
+
+<%= form_for @student do |f| %>
+  <% if @student.errors.any? %>
+    <div class="error_messages">
+      <h2>Błąd rejestracji</h2>
+      <ul>
+        <% for message in @student.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+<div class=form>  
+
+<div class="field">  
+    <%= f.label :index, 'Indeks:' %><br />
+    <%= f.text_field :index %>
+</div> 
+  
+<div class="field">  
+    <%= f.label :password, 'PIN:' %><br />
+    <%= f.password_field :password %>
+</div>
+  
+<div class="field">  
+    <%= f.label :password_confirmation, 'Potwierdź PIN:'%><br />
+    <%= f.password_field :password_confirmation %>
+</div>
+</div>
+  
+  <p class="button"><%= f.submit%></p>
+<% end %>
+
+<% content_for :links do %>
+  <label for="sumbit_form" class="button right">Zarejestruj się</label>
+<% end %>

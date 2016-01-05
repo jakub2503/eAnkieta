@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  index: MyString
+  pin_hash: MyString
+  pin_salt: MyString
+  elogin_info: MyString
+
+two:
+  index: MyString
+  pin_hash: MyString
+  pin_salt: MyString
+  elogin_info: MyString

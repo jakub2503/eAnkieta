@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'sign_up' => 'students#new', :as => 'sign_up'
+
  resources :surveys
   post 'scores/new', to:'scores#new_post', as:'new_score_post'
   get 'scores/new', to:'scores#index', as:'new_score_get'
@@ -27,6 +29,7 @@ Rails.application.routes.draw do
 
 
 
+  resources :students
 
   get '/lectures', to:'lectures#index', as:'all_lectures'
   patch '/lectures/:id', to:'lectures#update'
@@ -43,8 +46,6 @@ Rails.application.routes.draw do
   post '/statistics/:lecture_id_p/0', to:'surveys#statistics_specific_post'
   get '/statistics/:lecture_id_p/:survey_id_p', to:'surveys#statistics_specific', as:'statistics_specific'
   post '/statistics/:lecture_id_p/:survey_id_p', to:'surveys#statistics_specific_post'
-  
-    
 
 
 
