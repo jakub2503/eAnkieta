@@ -30,11 +30,10 @@
     <%= f.label :password_confirmation, 'Potwierdź PIN:'%><br />
     <%= f.password_field :password_confirmation %>
 </div>
+
 </div>
-  
-  <p class="button"><%= f.submit%></p>
+
+<%= f.submit "Zarejestruj się", :class => 'button right'%> 
+
 <% end %>
 
-<% content_for :links do %>
-  <label for="sumbit_form" class="button right">Zarejestruj się</label>
-<% end %>

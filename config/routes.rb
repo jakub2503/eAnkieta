@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'log_in' => 'sessions#new', :as => 'log_in'
+  get 'log_out' => 'sessions#destroy', :as => 'log_out'
   get 'sign_up' => 'students#new', :as => 'sign_up'
 
  resources :surveys
@@ -30,6 +32,7 @@ Rails.application.routes.draw do
 
 
   resources :students
+  resources :sessions
 
   get '/lectures', to:'lectures#index', as:'all_lectures'
   patch '/lectures/:id', to:'lectures#update'

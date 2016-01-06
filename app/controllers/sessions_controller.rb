@@ -1,24 +1,26 @@
-class StudentsController < ApplicationController
+class SessionsController < ApplicationController
   
   layout :define_layout
-
+  
   def new
-	@student = Student.new
   end
   
   def create
-  @student = Student.new(student_params)
-	if @student.save
-		redirect_to log_in_path, :notice => "Signed up!"
+	student = Student.authenticate(params[:index],params[:password])
+	if student
+		session[:user_id]=student.id
+		redirect_to statistics_path
 	else
 		render "new"
 	end
   end
   
-  private
-  def student_params
-	params.require(:student).permit(:index, :password)
+  def destroy
+	session[:user_id] = nil
+	redirect_to log_in_path
   end
+  
+  private
   
   def define_layout
     # Check if logged in, because current_user could be nil.
@@ -29,4 +31,5 @@ class StudentsController < ApplicationController
       #end
       "user"
   end
+  
 end

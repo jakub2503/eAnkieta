@@ -11,8 +11,18 @@
 	<div id="nav">
   		<%= render_navigation %>
 	</div>
-
-
+	
+	<!--
+	<div id="user_nav">
+		<% if current_user %>
+		Zalogowano jako <%= current_user.index %>
+			<%= link_to "Wyloguj się", log_out_path %>
+		<% else %>
+			<%= link_to "Zarejestruj się", sign_up_path %> lub 
+			<%= link_to "zaloguj się", log_in_path %>
+		<% end %>
+	</div>
+	-->
 	<div class="content">
   		<div class="container">
     		<div class="title">

@@ -51,13 +51,18 @@ SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |primary|
   primary.dom_id= 'navigation_bar'
   primary.item :navigation_title, 'System Ankietowania Zajęć'
-  primary.item :navigation_add_lecture, 'Dodaj przedmiot', new_lectures_path
-  primary.item :navigation_manage_lectures, 'Zarządzaj przedmiotami', lectures_path
-  primary.item :navigation_manage_surveys, 'Zarządzaj ankietami', specific_surveys_path(:id => lecture_navigation), if: proc { lecture_navigation != -1 }
-  primary.item :navigation_statistics, 'Statystyki', statistics_path
-  primary.item :navigation_help, 'Pomoc' , root_path
-
-  primary.item :navigation_scores, 'GLOSUJ', scores_path
+  if current_user
+  primary.item :navigation_user,  'Użytkownik: ' + current_user.index
+  end
+  primary.item :navigation_log_out, 'Zarejestruj się', sign_up_path, unless: -> { current_user }
+  primary.item :navigation_log_out, 'Zaloguj się', log_in_path, unless: -> { current_user }
+  primary.item :navigation_add_lecture, 'Dodaj przedmiot', new_lectures_path, if: -> { current_user }
+  primary.item :navigation_manage_lectures, 'Zarządzaj przedmiotami', lectures_path , if: -> { current_user }
+  primary.item :navigation_manage_surveys, 'Zarządzaj ankietami', specific_surveys_path(:id => lecture_navigation), if: proc { lecture_navigation != -1 } , if: -> { current_user }
+  primary.item :navigation_statistics, 'Statystyki', statistics_path, if: -> { current_user }
+  primary.item :navigation_help, 'Pomoc' , root_path, if: -> { current_user }
+  primary.item :navigation_scores, 'Głosuj', scores_path, if: -> { current_user }
+  primary.item :navigation_log_out, 'Wyloguj się', log_out_path, if: -> { current_user }
   
   end
 end

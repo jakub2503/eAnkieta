@@ -122,6 +122,17 @@
     position:relative;
     display: block;
   }
+  
+  #nav li#navigation_user {
+    background-color: $nav-darkblue;
+    color: $nav-title;
+    font-size: 10px;
+    padding: 10px 0px 20px 10px;
+    font-weight: bold;
+    line-height: 130%;
+    position:relative;
+    display: block;
+  }
 
 
   /* 2 horizontal lines as after and before */
