@@ -17,25 +17,138 @@ Statystyki
 		<span id="width_tmp"></span>
 <% end %>
 
+<%= javascript_include_tag "libraries/jsapi.js", "chartkick" %>
+
 <p id="notice"><%= notice %></p>
 
-<p id = "number_of_votes">
+<h3 id = "number_of_votes">
   Głosów:
 <%= @survey.number_of_votes %>
-</p>
-<p id = "general_score">
-<%= @survey.average_general_score.to_f.round(2) %>
-</p>
-<p id = "tempo_score">
-<%= @survey.average_tempo_score.to_f.round(2) %>
-</p>
-<p id = "importance_score">
-<%= @survey.average_importance_score.to_f.round(2) %>
-</p>
-<p id = "comments">
-Komentarze
-<%= @survey.number_of_comments %>
-</p>
+</h3>
+
+<div id = "score_container">
+	
+	<div id="graph">
+	<h2>Wrażenie ogólne</h2>
+	<%= column_chart [
+	  		{name: "Bardzo słabo", data: {"Ocena" => @survey.scores.where("general_score=1").count }},
+	  		{name: "Słabo", data: {"Ocena" => @survey.scores.where("general_score=2").count }},
+	  		{name: "Średnio", data: {"Ocena" => @survey.scores.where("general_score=3").count }},
+	  		{name: "Dobrze", data: {"Ocena" => @survey.scores.where("general_score=4").count }},
+	  		{name: "Bardzo dobrze", data: {"Ocena" => @survey.scores.where("general_score=5").count }}
+	  	],
+		id: "general_score_chart" ,
+						library: {									
+									series: [
+										{color: '#6E3B26', visibleInLegend: false},
+										{color: '#D99C87', visibleInLegend: false},
+										{color: '#F2CF3F', visibleInLegend: false},
+										{color: '#A4BC42', visibleInLegend: false},
+										{color: '#4194BC', visibleInLegend: false}
+									]
+								 }
+	 %>
+	 </div>
+	 <div id="score_number" class=
+	 	<%= case @survey.average_general_score.to_f.round(2)
+   				when 1..3 then "bad_score"
+   				when 3.01..5 then "good_score"
+   		    end 
+   		%> >
+   		<%= @survey.average_general_score.to_f.round(2) %>
+   	 </div>
+</div>
+
+<div id = "score_container">
+	
+	<div id="score_number" class=
+	 	<%= case @survey.average_tempo_score.to_f.round(2)
+   				when 2.01..4 then "good_score"
+   				else "bad_score"
+   		    end 
+   		 %> >
+   		 <%= @survey.average_tempo_score.to_f.round(2) %>
+   	</div>
+	<div id="graph">
+		<h2>Tempo zajęć</h2>
+	<%= column_chart [
+	  		{name: "Bardzo wolno", data: {"Ocena" => @survey.scores.where("tempo_score=1").count }},
+	  		{name: "Wolno", data: {"Ocena" => @survey.scores.where("tempo_score=2").count }},
+	  		{name: "Idealnie", data: {"Ocena" => @survey.scores.where("tempo_score=3").count }},
+	  		{name: "Szybko", data: {"Ocena" => @survey.scores.where("tempo_score=4").count }},
+	  		{name: "Bardzo szybko", data: {"Ocena" => @survey.scores.where("tempo_score=5").count }}
+	  	],
+		id: "tempo_score_chart" ,
+						library: {									
+									series: [
+										{color: '#6E3B26', visibleInLegend: false},
+										{color: '#F2CF3F', visibleInLegend: false},
+										{color: '#4194BC', visibleInLegend: false},
+										{color: '#F2CF3F', visibleInLegend: false},
+										{color: '#6E3B26', visibleInLegend: false}
+									]
+								 }
+	 %>
+	 </div>
+</div>
+
+
+
+
+<div id = "score_container">
+	
+	<div id="graph">
+		<h2>Pożyteczność wiedzy</h2>
+	<%= column_chart [
+	  		{name: "Bardzo słabo", data: {"Ocena" => @survey.scores.where("importance_score=1").count }},
+	  		{name: "Słabo", data: {"Ocena" => @survey.scores.where("importance_score=2").count }},
+	  		{name: "Średnio", data: {"Ocena" => @survey.scores.where("importance_score=3").count }},
+	  		{name: "Dobrze", data: {"Ocena" => @survey.scores.where("importance_score=4").count }},
+	  		{name: "Bardzo dobrze", data: {"Ocena" => @survey.scores.where("importance_score=5").count }}
+	  	],
+		id: "importance_score_chart" ,
+						library: {									
+									series: [
+										{color: '#6E3B26', visibleInLegend: false},
+										{color: '#D99C87', visibleInLegend: false},
+										{color: '#F2CF3F', visibleInLegend: false},
+										{color: '#A4BC42', visibleInLegend: false},
+										{color: '#4194BC', visibleInLegend: false}
+									],
+								 }
+	 %>
+	 </div>
+	 <div id="score_number" class=
+	 	<%= case @survey.average_importance_score.to_f.round(2)
+   				when 1..3 then "bad_score"
+   				when 3.01..5 then "good_score"
+   		    end 
+   		%> >
+   		<%= @survey.average_importance_score.to_f.round(2)  %>
+	 </div>
+</div>
+
+
+
+
+<div id = "comments">
+	<h3>Ilość komentarzy: <%= @survey.number_of_comments %></h3>
+
+	<table>
+		<tbody>
+			<% @comments.each do |comment| %>
+				<tr class="scores">
+			        <td>Wrażenie ogólne: <span class="red"><%= comment.general_score %></span></td>
+			        <td>Tempo zajęć: <span class="red"><%= comment.tempo_score %></span></td>
+			        <td>Pożyteczność wiedzy: <span class="red"><%= comment.importance_score %></span></td>
+			    </tr>
+			    <tr class="comment">
+			    	<td colspan="3"><%= comment.comment %></td>
+			    </tr>
+		    <% end %>
+		</tbody>
+	</table>
+</div>
 
 <% content_for :links do %>
   <%= link_to 'Powrót', statistics_surveys_path(:id => params[:lecture_id_p]), { :class=>"button right" } %>

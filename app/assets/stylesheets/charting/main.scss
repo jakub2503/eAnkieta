@@ -1,0 +1,68 @@
+/* CHARTS */
+
+#score_container 
+{
+  width: 100%;
+  max-height: 500px;
+  text-align: center;
+  overflow: hidden;
+}
+
+#score_container > * 
+{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#graph
+{
+ width: 60%;
+}
+
+#score_number
+{
+  width: 39%;
+}
+
+#score_container h2
+{
+  width:100%;
+  display:box;
+  text-align: center;
+  margin-top: 22px;
+  margin-bottom: 0px;
+}
+
+#score_number{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.bad_score {
+  color: #6E3B26;
+}
+
+.good_score {
+  color: #4194BC;
+}
+
+table .scores td {
+  border: none;
+  max-width: 400px;
+  padding: 5px 20px;
+}
+
+table tr.scores {
+  border: solid 2px $title-border;
+  border-bottom: none;
+}
+
+table .comment td {
+  padding-top: 15px;
+  border-top: none;
+}
+
+.red {
+  color: #6E3B26;
+  font-weight: bold;
+}

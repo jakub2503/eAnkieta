@@ -39,11 +39,9 @@ table tr.summary_row * {
 	color: $font-dark;
 }
 
-table td.link .edit:hover,
-table td.link .delete:hover,
-table td.link .goto:hover {
+table .link a:hover,
+table .link a.delete:hover{
   color: $font-dark;
-
 }
 
 table td.link .delete {

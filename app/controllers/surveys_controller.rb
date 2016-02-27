@@ -135,6 +135,7 @@ class SurveysController < ApplicationController
       end
       flash[:surveys_for_selector] = surveys_for_selector
       @survey = lecture.surveys.find(params[:survey_id_p])
+      @comments = @survey.scores.where("comment != ?",'')
   end
 
   # POST /statistics/1/1

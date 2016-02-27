@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
+# gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -46,10 +47,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Use simple-navigation for navigation bar
 gem "simple-navigation"
-#CoffeeScript because of errors
+#CoffeeScript - javascript errors
 gem 'coffee-script-source', '1.8.0'
 #jquery-turbolings so jquery can work properly with turbolinks
 gem 'jquery-turbolinks'
 gem 'wicked_pdf'
 #encrypt of passwords
 gem 'bcrypt-ruby', :require => 'bcrypt'
+#chartkick - for charts on website
+gem "chartkick"
+

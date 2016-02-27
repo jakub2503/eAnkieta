@@ -27,6 +27,7 @@
 .field>*>* {
 	display: inline-block;
     vertical-align: top;
+
 }
 
 .time_field {
@@ -67,6 +68,13 @@
   padding: 2px 5px;
 }
 
+.field.number div {
+  -webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+
+}
+
 .field.number input[type="text"]{
   width: 50px;
   text-align: center;
@@ -74,7 +82,7 @@
 
 .field.number .plus {
 	margin-left: 1px;
-  background : asset-url("plus.jpg") no-repeat right -1px;
+  background : asset-url("plus.jpg") no-repeat right -1px top -1px;
   height:20px;
   width: 22px;
   border: 1px outset $title-border;
@@ -83,7 +91,7 @@
 
 .field.number .minus {
 	margin-right: 1px;
-  background : asset-url("minus.jpg") no-repeat right -1px;
+  background : asset-url("minus.jpg") no-repeat right -1px top -1px;
   height:20px;
   width: 22px;
   border: 1px outset $title-border;
@@ -185,3 +193,19 @@ input[type="radio"] + label:active, input[type="radio"]:checked + label:active {
   box-shadow: 0 1px 2px rgba(0,0,0,0.2), inset 0px 1px 3px rgba(0,0,0,0.3);
 }
 
+
+
+
+
+th .current {
+  padding-right: 14px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+th .asc { 
+  background-image: asset-url("up.jpg"); 
+}
+
+th .desc { 
+  background-image: asset-url("down.jpg")
+}
